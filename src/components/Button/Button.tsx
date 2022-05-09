@@ -10,9 +10,9 @@ const StyledButton = styled.TouchableOpacity`
   padding: 8px;
   justify-content: center;
   align-items: center;
-  background-color: green;
+  background-color: #89D3B1;
   border-radius: 10px;
-  height: 40px;
+  height: 50px;
   width: 100%;
   
 `
