@@ -9,7 +9,6 @@ import {
   useFonts,
 } from '@expo-google-fonts/nunito'
 
-import { InitialAppScreen } from './src/screens/InitialAppScreen/InitialAppScreen';
 import AppLoading from 'expo-app-loading';
 import { RootNavigation } from './src/navigation/_root';
 
