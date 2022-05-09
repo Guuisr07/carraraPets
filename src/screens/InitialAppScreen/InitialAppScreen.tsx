@@ -1,7 +1,7 @@
 import React from 'react'
-import { ImageBackground } from 'react-native'
 import styled from 'styled-components/native'
 import { Button } from '../../components/Button/Button'
+import { Coordinator } from '../../navigation/coordinator/coordinator'
 import { images } from '../../utils/searchAssets'
 
 type InitialAppScreen = {
@@ -43,6 +43,9 @@ const FooterContainer = styled.View`
   padding-left: 16px;
   padding-right: 16px;
 `
+const LoginButton = styled(Button)`
+
+`
 
 export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
   return (
@@ -53,7 +56,8 @@ export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
           <DescriptionText>A melhor forma de transportar o seu animalzinho. Vamos tratar com muito amor e carinho os nossos fieis companheiros</DescriptionText>
         </InfoContainer>
         <FooterContainer>
-          <Button text={'Iniciar'} />
+          <LoginButton text={'Login'} onPress={() => Coordinator.goToLoginScreen()}/>
+          <Button text={'Cadastro'} />
         </FooterContainer>
       </StyledContainer>
     </BackgroundImage>

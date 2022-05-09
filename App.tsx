@@ -11,6 +11,7 @@ import {
 
 import { InitialAppScreen } from './src/screens/InitialAppScreen/InitialAppScreen';
 import AppLoading from 'expo-app-loading';
+import { RootNavigation } from './src/navigation/_root';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,7 +26,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <InitialAppScreen />
+     <RootNavigation />
     </ThemeProvider>
   );
 }

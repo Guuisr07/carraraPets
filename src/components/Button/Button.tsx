@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 type ButtonProps = {
   text: string
+  onPress?: () => void
 }
 
 const StyledButton = styled.TouchableOpacity`
@@ -22,9 +23,9 @@ const DescriptionButton = styled.Text`
   color: white;
 `
 
-export const Button: React.FC<ButtonProps> = ({ text }) => {
+export const Button: React.FC<ButtonProps> = ({ text, onPress }) => {
   return (
-    <StyledButton>
+    <StyledButton onPress={onPress}>
       <DescriptionButton>{text}</DescriptionButton>
     </StyledButton>
   )
