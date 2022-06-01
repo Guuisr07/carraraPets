@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1047789074310",
+    "project_id": "projeto-tcc-1f164",
+    "storage_bucket": "projeto-tcc-1f164.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047789074310:android:f310068b0c9df275585e07",
+        "android_client_info": {
+          "package_name": "com.carraraPets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047789074310-eptbve84m7oe3qcql0ln218148t0koo7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrBSZ8mBwQe7sPgc-UalQkXGPWihZC-VU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047789074310-eptbve84m7oe3qcql0ln218148t0koo7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
