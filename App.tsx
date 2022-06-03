@@ -11,6 +11,7 @@ import {
 
 import AppLoading from 'expo-app-loading';
 import { RootNavigation } from './src/navigation/_root';
+import { AuthProvider } from './src/hooks/auth';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,7 +26,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-     <RootNavigation />
+      <AuthProvider>
+        <RootNavigation />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

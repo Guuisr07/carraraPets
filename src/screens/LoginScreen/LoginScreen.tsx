@@ -10,7 +10,7 @@ import { Button } from '../../components/Button/Button'
 type LoginScreen = {
 }
 
-const StyledContainer = styled.View<{ insets: string }>`
+const StyledContainer = styled.View<{ insets: number }>`
   padding-top: ${({ insets }) => insets};
   background-color: white;
   flex: 1; 
@@ -28,7 +28,6 @@ const BackIcon = styled<any>(Feather)`
 `
 const LogoIcon = styled<any>(MaterialCommunityIcons)`
   font-size: 60px;
-  color: #89D3B1;
   margin-top: 40px;
   margin-right: 24px; 
 `
@@ -84,12 +83,12 @@ export const LoginScreen: React.FC<LoginScreen> = ({ }) => {
   return (
     <>
       <StyledContainer insets={insets.top}>
-        <TouchableOpacity onPress={() => Coordinator.goBack()}>
-          <HeaderContainer>
+        <HeaderContainer>
+          <TouchableOpacity onPress={() => Coordinator.goBack()}>
             <BackIcon name={'arrow-left'} />
-            <LogoIcon name={'dog'} />
-          </HeaderContainer>
-        </TouchableOpacity>
+          </TouchableOpacity>
+          <LogoIcon name={'dog'} />
+        </HeaderContainer>
 
         <InfoContainer>
           <TitleLoginScreen>Bem-vindo de volta</TitleLoginScreen>

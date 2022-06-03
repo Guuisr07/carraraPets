@@ -39,7 +39,7 @@ const InputContainer = styled(View)<any>`
   align-items: center;
   height: 50px;
   background: ${({ theme, onError }) =>
-    onError ? theme.colors.attention : theme.colors.background};
+    onError ? theme.colors.attention : theme.colors.shape};
   border: 1px solid
     ${({ theme, onError }) =>
       onError ? theme.colors.attention : theme.colors.background};
@@ -96,30 +96,25 @@ export const TextInput: React.FC<TextInputProps> = ({
   const renderRequirementLabel = (text: string) => (
     <StyledText
       fontSize={'12px'}
-      color={'typography'}
       fontWeight={'400'}
-      primaryColor>
+      >
       {text}
     </StyledText>
   )
   const renderLabel = (text: string) => (
     <StyledText
-      variant={'custom'}
       fontSize={sizeLabelText ? sizeLabelText : '16px'}
-      color={'typography'}
-      colorVariant={'800'}
+      color={'gray'}
       fontWeight={'400'}
-      primaryColor>
+      >
       {text}
     </StyledText>
   )
   const renderHelpText = (text: string) => (
     <StyledText
       fontSize={'14px'}
-      color={'typography'}
       fontWeight={'400'}
-      gutterTop
-      primaryColor>
+      gutterTop>
       {text}
     </StyledText>
   )

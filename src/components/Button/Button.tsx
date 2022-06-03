@@ -1,7 +1,8 @@
 import React from 'react'
+import { TouchableOpacityProps } from 'react-native'
 import styled from 'styled-components/native'
 
-type ButtonProps = {
+interface ButtonProps extends TouchableOpacityProps {
   text: string
   onPress?: () => void
 }
