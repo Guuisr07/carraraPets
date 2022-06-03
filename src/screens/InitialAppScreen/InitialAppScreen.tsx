@@ -72,7 +72,7 @@ export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
     <StyledContainer>
       <Header>
         <TitleWrapper>
-          <LogoApp width={120} height={68} />
+          {/* <LogoApp width={120} height={68} /> */}
           <Title >
             Embarque {'\n'}
             nesta diversão com{'\n'}
