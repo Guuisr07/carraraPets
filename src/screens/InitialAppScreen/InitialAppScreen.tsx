@@ -1,9 +1,12 @@
 import React from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
-import { Button } from '../../components/Button/Button'
-import { Coordinator } from '../../navigation/coordinator/coordinator'
-import { images } from '../../utils/searchAssets'
+import LogoApp from '../../assets/icons/logo.svg'
+import LogoApple from '../../assets/icons/apple.svg'
+import LogoGoogle from '../../assets/icons/google.svg'
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
+import { SignInSocialButton } from '../../components/SignInSocialButton/SignInSocialButton'
+import { useAuth } from '../../hooks/auth'
+import { Alert } from 'react-native'
 
 type InitialAppScreen = {
 }
@@ -11,58 +14,85 @@ type InitialAppScreen = {
 
 const StyledContainer = styled.View`
   flex: 1;
-  align-items: center;
+  
   background-color: white;
 `
-const InfoContainer = styled.View`
-  padding-left: 16px;
-  padding-right: 16px;
+const Header = styled.View`
+  width: 100%;
   justify-content: flex-end;
-  flex: 1;
+  align-items: center;
+  height: 70%;
+  background-color: ${({ theme }) => theme.colors.primary};
+`
+
+const TitleWrapper = styled.View`
+  align-items: center;
 `
 
 const Title = styled.Text`
-  color: ${({ theme }) => theme.colors.text_dark};
-  font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${({ theme }) => theme.spacingSizes.mediumLargeSpacing};
-  margin-bottom: 16px;
+  font-family: ${({ theme }) => theme.fonts.medium};
+  font-size: ${RFValue(30)}px;
+  color: ${({ theme }) => theme.colors.shape};
+  text-align: center;
+  margin-top: 45px;
 `
-const DescriptionText = styled.Text`
-  color: ${({ theme }) => theme.colors.text};
+const SignInTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: 16px;
-  
+  font-size: ${RFValue(15)}px;
+  color: ${({ theme }) => theme.colors.shape};
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 67px;
 `
-const ImageBackground = styled.Image`
-  width: 300px;
-  height: 300px;
-`
-const FooterContainer = styled.View`
+const Footer = styled.View`
   width: 100%;
-  padding-bottom: 16px;
-  padding-horizontal: 16px;
-  flex: 0.5;
-  justify-content: flex-end;
+  height: 30%;
+  background-color: ${({ theme }) => theme.colors.secondary};
+`
+const FooterWrapper = styled.View`
+  margin-top: ${RFPercentage(-4)}px;
+  padding: 0 32px;
+  justify-content: space-between;
 `
 
 export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
+  const { signInWithGoogle } = useAuth()
+
+  const handleSignInWithGoogle = async () => {
+     
+    try {
+      await signInWithGoogle()
+    } catch (error) {
+      console.log(error)
+      Alert.alert('Nao foi possivel conectar a conta Google')
+    }
+  }
+
   return (
     <StyledContainer>
-      <InfoContainer>
-        <Title numberOfLines={2}>Bem vindo {'\n'}ao carrara pets</Title>
-        <DescriptionText>A melhor forma de transportar o seu animalzinho. Vamos tratar com muito amor e carinho os nossos fieis companheiros</DescriptionText>
-      </InfoContainer>
+      <Header>
+        <TitleWrapper>
+          <LogoApp width={120} height={68} />
+          <Title >
+            Embarque {'\n'}
+            nesta diversão com{'\n'}
+            o seu pet
+          </Title>
 
-      <ImageBackground source={images.initialScreenImage} resizeMode={'center'} />
+        </TitleWrapper>
 
-      <FooterContainer>
-        <View style={{ marginBottom: 16 }}>
-          <Button text={'Login'} onPress={() => Coordinator.goToLoginScreen()} />
-        </View>
-        <Button text={'Cadastro'} onPress={() => Coordinator.goToFisrtSignUpScreen()}/>
-      </FooterContainer>
+        <SignInTitle>
+          Faca o seu login com{'\n'}
+          uma das contas abaixo
+        </SignInTitle>
+
+      </Header>
+      <Footer>
+        <FooterWrapper>
+          <SignInSocialButton title='Entrar com o google' svg={LogoGoogle} onPress={() => handleSignInWithGoogle()}/>
+          <SignInSocialButton title='Entrar com Apple' svg={LogoApple} onPress={handleSignInWithGoogle}/>
+        </FooterWrapper>
+      </Footer>
     </StyledContainer>
   )
 }
-
-//Este e-mail é importante, porquê iremos encaminhar informações essenciais.
