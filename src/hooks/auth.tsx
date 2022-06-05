@@ -1,5 +1,6 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import * as AuthSession from 'expo-auth-session';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 interface AuthProviderProps {
@@ -16,6 +17,8 @@ interface User {
 interface AuthContextData {
   user: User
   signInWithGoogle(): Promise<void>
+  signOut(): Promise<void>
+  userStorageLoading: boolean 
 }
 
 interface AuthorizationResponse {
@@ -26,11 +29,14 @@ interface AuthorizationResponse {
 }
 
 
+export const userStorageKey = '@carraraPets:user'
+
 export const AuthContext = createContext({} as AuthContextData)
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const [user, setUser] = useState<User>({} as User)
+  const [userStorageLoading, setUserStorageLoading] = useState(true)
 
   async function signInWithGoogle(){
     try {
@@ -48,23 +54,44 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         const response = await fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${params.access_token}`)
         const userInfo = await response.json()
 
-        setUser({
+        const userLogged = {
           id: userInfo.id,
           email: userInfo.email,
           name: userInfo.given_name,
           photo: userInfo.picture
-        })
+        }
 
+        setUser(userLogged)
+        await AsyncStorage.setItem(userStorageKey, JSON.stringify(userLogged))
 
-        console.log(userInfo)
       }
     } catch (error: any) {
       throw new Error(error)
     }
   }
 
+  const signOut = async () => {
+    setUser({} as User)
+    await AsyncStorage.removeItem(userStorageKey)
+  }
+
+  useEffect(() => {
+    const loadStorageUserData = async () => {
+      const userStorage = await AsyncStorage.getItem(userStorageKey)
+
+      if(userStorage){
+        const userLogged = JSON.parse(userStorage) as User
+        setUser(userLogged)
+      }
+      setUserStorageLoading(false)
+    }
+
+    loadStorageUserData()
+
+  },[])
+
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle }}>
+    <AuthContext.Provider value={{ user, signInWithGoogle, signOut, userStorageLoading }}>
       {children}
     </AuthContext.Provider>
   )

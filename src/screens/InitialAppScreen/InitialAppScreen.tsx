@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/native'
-import LogoApp from '../../assets/icons/logo.svg'
 import LogoApple from '../../assets/icons/apple.svg'
 import LogoGoogle from '../../assets/icons/google.svg'
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
 import { SignInSocialButton } from '../../components/SignInSocialButton/SignInSocialButton'
 import { useAuth } from '../../hooks/auth'
-import { Alert } from 'react-native'
+import { ActivityIndicator, Alert, Platform } from 'react-native'
+import theme from '../../global/theme'
 
 type InitialAppScreen = {
 }
@@ -56,15 +56,18 @@ const FooterWrapper = styled.View`
 `
 
 export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const { signInWithGoogle } = useAuth()
 
   const handleSignInWithGoogle = async () => {
-     
+
     try {
-      await signInWithGoogle()
+      setIsLoading(true)
+      return await signInWithGoogle()
     } catch (error) {
       console.log(error)
       Alert.alert('Nao foi possivel conectar a conta Google')
+      setIsLoading(false)
     }
   }
 
@@ -89,9 +92,11 @@ export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
       </Header>
       <Footer>
         <FooterWrapper>
-          <SignInSocialButton title='Entrar com o google' svg={LogoGoogle} onPress={() => handleSignInWithGoogle()}/>
-          <SignInSocialButton title='Entrar com Apple' svg={LogoApple} onPress={handleSignInWithGoogle}/>
+          <SignInSocialButton title='Entrar com o google' svg={LogoGoogle} onPress={() => handleSignInWithGoogle()} />
+          {Platform.OS === 'ios' &&
+            <SignInSocialButton title='Entrar com Apple' svg={LogoApple} onPress={handleSignInWithGoogle} />}
         </FooterWrapper>
+        {isLoading && <ActivityIndicator color={theme.colors.shape} style={{ marginTop: 18 }} />}
       </Footer>
     </StyledContainer>
   )
