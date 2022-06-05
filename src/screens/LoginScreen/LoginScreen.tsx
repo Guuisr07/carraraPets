@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Coordinator } from '../../navigation/coordinator/coordinator'
 import { TextInput } from '../../components/TextInput/TextInput'
 import { Button } from '../../components/Button/Button'
+import { useAuth } from '../../hooks/auth'
 
 type LoginScreen = {
 }
@@ -26,11 +27,22 @@ const BackIcon = styled<any>(Feather)`
   margin-top: 20px;
   margin-left: 16px; 
 `
+const PowerButton = styled<any>(Feather)`
+  font-size: 30px;
+  color: black;
+  margin-top: 20px;
+  margin-left: 16px; 
+`
 const LogoIcon = styled<any>(MaterialCommunityIcons)`
   font-size: 60px;
   margin-top: 40px;
   margin-right: 24px; 
 `
+export const Photo = styled.Image`
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+`;
 const InfoContainer = styled.View`
   flex: 1;
   margin-top: 40px;
@@ -79,6 +91,7 @@ const FooterContainer = styled.View`
 
 export const LoginScreen: React.FC<LoginScreen> = ({ }) => {
   const insets = useSafeAreaInsets()
+  const { signOut, user } = useAuth()
 
   return (
     <>
@@ -87,11 +100,11 @@ export const LoginScreen: React.FC<LoginScreen> = ({ }) => {
           <TouchableOpacity onPress={() => Coordinator.goBack()}>
             <BackIcon name={'arrow-left'} />
           </TouchableOpacity>
-          <LogoIcon name={'dog'} />
         </HeaderContainer>
+         <Photo source={{ uri: user.photo }}/>
 
         <InfoContainer>
-          <TitleLoginScreen>Bem-vindo de volta</TitleLoginScreen>
+          <TitleLoginScreen>{`Bem-vindo de volta, ${user.name}`}</TitleLoginScreen>
           <DesciprtionText numberOfLines={3}>Como é bom ter você aqui novamente, por {'\n'}favor
             insira as informações abaixo para{'\n'}continuarmos.
           </DesciprtionText>
@@ -100,6 +113,9 @@ export const LoginScreen: React.FC<LoginScreen> = ({ }) => {
             <InputPassword />
           </InputContainer>
         </InfoContainer>
+        <TouchableOpacity onPress={() => signOut()}>
+            <PowerButton name={'power'} />
+          </TouchableOpacity>
         <FooterContainer>
           <Button text='Enviar' />
         </FooterContainer>

@@ -10,7 +10,6 @@ import { ThirdSignUpScreen } from '../../screens/SignUp/ThirdSignUpScreen'
 export const ScreensMainStack = 'screens.main.stack'
 
 export const MainStackScreenNames = {
-  InitialAppScreen: 'InitialAppScreen',
   MainScreen: 'MainScreen',
   LoginScreen: 'LoginScreen',
   FisrtSignUpScreen: 'FisrtSignUpScreen',
@@ -20,14 +19,6 @@ export const MainStackScreenNames = {
 }
 
 const MainStack = (Stack: any) => [
-  <Stack.Screen
-    key={`${ScreensMainStack}${MainStackScreenNames.InitialAppScreen}`}
-    name={MainStackScreenNames.InitialAppScreen}
-    component={InitialAppScreen}
-    options={{
-      headerShown: false,
-    }}
-  />,
   <Stack.Screen
     key={`${ScreensMainStack}${MainStackScreenNames.LoginScreen}`}
     name={MainStackScreenNames.LoginScreen}
