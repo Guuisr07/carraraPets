@@ -3,15 +3,15 @@ import { InitialAppScreen } from '../../screens/InitialAppScreen/InitialAppScree
 
 export const ScreensMainStack = 'screens.main.stack'
 
-export const MainStackScreenNames = {
+export const AuthStackScreenNames = {
   InitialAppScreen: 'InitialAppScreen',
   
 }
 
 const AuthStack = (Stack: any) => [
   <Stack.Screen
-    key={`${ScreensMainStack}${MainStackScreenNames.InitialAppScreen}`}
-    name={MainStackScreenNames.InitialAppScreen}
+    key={`${ScreensMainStack}${AuthStackScreenNames.InitialAppScreen}`}
+    name={AuthStackScreenNames.InitialAppScreen}
     component={InitialAppScreen}
     options={{
       headerShown: false,

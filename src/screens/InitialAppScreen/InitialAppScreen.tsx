@@ -60,7 +60,6 @@ export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
   const { signInWithGoogle } = useAuth()
 
   const handleSignInWithGoogle = async () => {
-
     try {
       setIsLoading(true)
       return await signInWithGoogle()
@@ -92,7 +91,7 @@ export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
       </Header>
       <Footer>
         <FooterWrapper>
-          <SignInSocialButton title='Entrar com o google' svg={LogoGoogle} onPress={() => handleSignInWithGoogle()} />
+          <SignInSocialButton title='Entrar com o google' svg={LogoGoogle} onPress={handleSignInWithGoogle} />
           {Platform.OS === 'ios' &&
             <SignInSocialButton title='Entrar com Apple' svg={LogoApple} onPress={handleSignInWithGoogle} />}
         </FooterWrapper>

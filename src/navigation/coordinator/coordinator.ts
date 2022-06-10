@@ -1,3 +1,4 @@
+import { AuthStackScreenNames } from "../stacks/AuthStack"
 import { MainStackScreenNames } from "../stacks/MainStack"
 import { Navigation } from "./navigationService"
 
@@ -5,12 +6,16 @@ export class Coordinator {
   static goBack() {
     Navigation.goBack()
   }
-  // Main Stack
+  // Auth Stack
   static goToInitialAppScreen() {
-    Navigation.replace(MainStackScreenNames.InitialAppScreen)
+    Navigation.replace(AuthStackScreenNames.InitialAppScreen)
   }
+  // Main Stack
   static goToLoginScreen() {
     Navigation.navigate(MainStackScreenNames.LoginScreen)
+  }
+  static goToCheckoutScreen(params?: Record<string, any>) {
+    Navigation.navigate(MainStackScreenNames.CheckoutScreen, params)
   }
   static goToFisrtSignUpScreen() {
     Navigation.navigate(MainStackScreenNames.FisrtSignUpScreen)
