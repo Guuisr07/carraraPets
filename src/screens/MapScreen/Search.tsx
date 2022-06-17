@@ -4,7 +4,8 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { credentials } from '../../utils/credentials'
 
 interface SearchProps {
-  handleSetDestination: () => {}
+  handleSetDestination: (data: any,details: any) => void
+  handleSetOrigin?: (data: any,details: any) => void
 }
 
 export const Search: React.FC<SearchProps> = ({
@@ -13,35 +14,31 @@ export const Search: React.FC<SearchProps> = ({
 
   return (
     <GooglePlacesAutocomplete
-      placeholder="Search"
+      placeholder="Para onde vamos?"
       query={{
         key: credentials.googleApi,
         language: 'pt-br',
       }}
-      onPress={handleSetDestination}
+      onPress={(data, details) => handleSetDestination(data, details)}
+      
       textInputProps={{
         autoCapitalize: 'none',
         autoCorrect: false,
       }}
-      enablePoweredByContainer={false}
       fetchDetails
       styles={{
         container: {
-          position: "absolute",
-          width: "100%"
+          width: "100%",
+          flex: 0,
         },
         textInputContainer: {
-          flex: 1,
-          backgroundColor: "transparent",
-          height: 54,
           marginHorizontal: 20,
-          borderTopWidth: 0,
-          borderBottomWidth: 0
         },
         textInput: {
-          height: 54,
+          height: 48,
           paddingLeft: 20,
           paddingRight: 20,
+          backgroundColor: 'white',
           elevation: 5,
           shadowColor: "#000",
           shadowOpacity: 0.1,
@@ -49,7 +46,7 @@ export const Search: React.FC<SearchProps> = ({
           shadowRadius: 15,
           borderWidth: 1,
           borderColor: "#DDD",
-          fontSize: 18
+          fontSize: 16
         },
         listView: {
           borderWidth: 1,
@@ -61,7 +58,6 @@ export const Search: React.FC<SearchProps> = ({
           shadowOpacity: 0.1,
           shadowOffset: { x: 0, y: 0 },
           shadowRadius: 15,
-          marginTop: 10
         },
         description: {
           fontSize: 16

@@ -17,6 +17,9 @@ export class Coordinator {
   static goToCheckoutScreen(params?: Record<string, any>) {
     Navigation.navigate(MainStackScreenNames.CheckoutScreen, params)
   }
+  static goToProfileScreen() {
+    Navigation.navigate(MainStackScreenNames.ProfileScreen)
+  }
   static goToFisrtSignUpScreen() {
     Navigation.navigate(MainStackScreenNames.FisrtSignUpScreen)
   }

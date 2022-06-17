@@ -6,12 +6,12 @@ import { SecondSignUpScreen } from '../../screens/SignUp/SecondSignUpScreen'
 import { SuccessSignUpScreen } from '../../screens/SignUp/SuccessSignUpScreen'
 import { ThirdSignUpScreen } from '../../screens/SignUp/ThirdSignUpScreen'
 import { CheckoutScreen } from '../../screens/CheckoutScreen/CheckoutScreen'
-
+import { ProfileScreen } from '../../screens/ProfileScreen/ProfileScreen'
 
 export const ScreensMainStack = 'screens.main.stack'
 
 export const MainStackScreenNames = {
-  MapScreen: 'MapScreen', 
+  MapScreen: 'MapScreen',
   MainScreen: 'MainScreen',
   LoginScreen: 'LoginScreen',
   FisrtSignUpScreen: 'FisrtSignUpScreen',
@@ -19,6 +19,7 @@ export const MainStackScreenNames = {
   ThirdSignUpScreen: 'ThirdSignUpScreen',
   SuccessSignUpScreen: 'SuccessSignUpScreen',
   CheckoutScreen: 'CheckoutScreen',
+  ProfileScreen: 'ProfileScreen',
 }
 
 const MainStack = (Stack: any) => [
@@ -39,13 +40,21 @@ const MainStack = (Stack: any) => [
     }}
   />,
   <Stack.Screen
-  key={`${ScreensMainStack}${MainStackScreenNames.CheckoutScreen}`}
-  name={MainStackScreenNames.CheckoutScreen}
-  component={CheckoutScreen}
-  options={{
-    headerShown: false,
-  }}
-/>,
+    key={`${ScreensMainStack}${MainStackScreenNames.CheckoutScreen}`}
+    name={MainStackScreenNames.CheckoutScreen}
+    component={CheckoutScreen}
+    options={{
+      headerShown: false,
+    }}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.ProfileScreen}`}
+    name={MainStackScreenNames.ProfileScreen}
+    component={ProfileScreen}
+    options={{
+      headerShown: false,
+    }}
+  />,
   <Stack.Screen
     key={`${ScreensMainStack}${MainStackScreenNames.FisrtSignUpScreen}`}
     name={MainStackScreenNames.FisrtSignUpScreen}
