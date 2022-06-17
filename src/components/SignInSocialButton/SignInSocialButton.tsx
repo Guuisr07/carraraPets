@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler'
 import { SvgProps } from 'react-native-svg'
 import { RFValue } from 'react-native-responsive-fontsize'
+import { TouchableOpacity } from 'react-native'
 
 interface SignInSocialButtonProps extends RectButtonProps {
   title: string
@@ -10,7 +11,7 @@ interface SignInSocialButtonProps extends RectButtonProps {
   onPress: () => void
 }
 
-const Button = styled(RectButton)`
+const Button = styled(TouchableOpacity)`
   height: ${RFValue(56)}px;
   background-color: ${({theme}) => theme.colors.shape};
   border-radius: 5px;
