@@ -124,11 +124,7 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
               />
             </>
           )}
-          {Platform.OS === 'ios' && (
-            <ProfileButton onPress={Coordinator.goToProfileScreen}>
-              <ProfilePicture source={{ uri: user.photo }} />
-            </ProfileButton>
-          )}
+          
         </MapView>
         <CardRun behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <ContainerCardTitle>
@@ -136,10 +132,7 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
           </ContainerCardTitle>
           <Search handleSetDestination={setDestinationGoogleInput} />
           
-          <TouchableOpacity onPress={() => signOut()}>
-          <PowerButton name={'power'}/>
-          </TouchableOpacity>
-
+          
           {distance && (
             <ResumeRideContainer>
               <TitleResumeRide>Popular</TitleResumeRide>
