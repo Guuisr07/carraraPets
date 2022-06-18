@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 import LogoApple from '../../assets/icons/apple.svg'
 import LogoGoogle from '../../assets/icons/google.svg'
+import LogoApp from '../../assets/icons/logo.svg'
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
 import { SignInSocialButton } from '../../components/SignInSocialButton/SignInSocialButton'
 import { useAuth } from '../../hooks/auth'
@@ -14,7 +15,6 @@ type InitialAppScreen = {
 
 const StyledContainer = styled.View`
   flex: 1;
-  
   background-color: white;
 `
 const Header = styled.View`
@@ -54,6 +54,18 @@ const FooterWrapper = styled.View`
   padding: 0 32px;
   justify-content: space-between;
 `
+const LogoContainer = styled.View`
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+`
+const LogoTitle = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.semiBold};
+  font-size: ${RFValue(16)}px;
+  color: ${({ theme }) => theme.colors.shape};
+  text-align: center;
+  margin-top: 8px;
+`
 
 export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -74,7 +86,10 @@ export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
     <StyledContainer>
       <Header>
         <TitleWrapper>
-          {/* <LogoApp width={120} height={68} /> */}
+          <LogoContainer>
+           <LogoApp  width={70} height={70}/> 
+          <LogoTitle>CarraraPets</LogoTitle>
+           </LogoContainer> 
           <Title >
             Embarque {'\n'}
             nesta diversão com{'\n'}

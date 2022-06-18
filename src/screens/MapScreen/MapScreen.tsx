@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { Platform, StatusBar, KeyboardAvoidingView } from 'react-native'
+import { Platform, StatusBar, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
 import { useAuth } from '../../hooks/auth'
-
 import * as Location from 'expo-location'
 import { useEffect, useRef, useState } from 'react'
 import { credentials } from '../../utils/credentials'
@@ -11,6 +10,7 @@ import { images } from '../../utils/searchAssets'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Coordinator } from '../../navigation/coordinator/coordinator'
 import { Search } from './Search'
+import { Feather } from '@expo/vector-icons'
 import theme from '../../global/theme'
 import {
   CardRun,
@@ -28,6 +28,13 @@ import {
   StyledContainer,
   TitleResumeRide,
 } from './styles'
+import styled from 'styled-components/native'
+
+
+export const PowerButton = styled<any>(Feather)`
+  font-size: 40px;
+  color: black;
+`
 
 export const MapScreen: React.FC<any> = ({ navigation }) => {
   const mapEl = useRef()
@@ -37,7 +44,7 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
   const [distance, setDistance] = useState()
   const [price, setPrice] = useState(0)
 
-  const { user } = useAuth()
+  const { user, signOut } = useAuth()
 
   useEffect(() => {
     ;(async () => {
@@ -128,6 +135,10 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
             <CardTitle>{`Boa tarde, ${user.name}`}</CardTitle>
           </ContainerCardTitle>
           <Search handleSetDestination={setDestinationGoogleInput} />
+          
+          <TouchableOpacity onPress={() => signOut()}>
+          <PowerButton name={'power'}/>
+          </TouchableOpacity>
 
           {distance && (
             <ResumeRideContainer>
