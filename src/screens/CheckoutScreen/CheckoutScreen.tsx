@@ -1,58 +1,79 @@
-import React, { useEffect, useState } from 'react'
-import { RFValue } from 'react-native-responsive-fontsize'
+import React from 'react'
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
 import styled from 'styled-components/native'
 import { Feather } from '@expo/vector-icons'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
-import * as Location from 'expo-location'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Coordinator } from '../../navigation/coordinator/coordinator'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { TouchableOpacity } from 'react-native'
+const LottieView = require('lottie-react-native')
 
-const StyledContainer = styled.View`
+const StyledContainer =  styled.View`
   flex: 1;
 `
-
-const TitleScreen = styled.Text`
+const HeaderContainer = styled.View<{ insets: number }>`
+padding-top: ${({ insets }) => insets};
+  background-color: ${({ theme }) => theme.colors.primary};
+  height: 50%;
+`
+const StyledDescriptionContainer = styled.View`
+  height: 50%;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.secondary};
+`
+const DescriptionText = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: ${RFValue(24)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
+  color: ${({ theme }) => theme.colors.shape};
+  margin-top: 30px;
 `
 const PowerButton = styled<any>(Feather)`
   font-size: 30px;
-  color: black;
+  color: white;
   margin-top: 20px;
   margin-left: 16px;
 `
+const AnimationContainer = styled.View`
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  height: 200px;
+  width: 200px;
+  elevation: 5;
+  margin-top: ${RFPercentage(-15)}px;
+`
 
-export const CheckoutScreen: React.FC<any> = ({ route }) => {
-  console.log(route)
-  const [origin, setOrigin] = useState()
-  const [errorMsg, setErrorMsg] = useState()
-
-  useEffect(() => {
-    ;(async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync()
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied')
-        return
-      }
-
-      const location = await Location.getCurrentPositionAsync({})
-      setOrigin({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      })
-    })()
-  }, [])
+export const CheckoutScreen: React.FC<any> = ({}) => {
+  const insets = useSafeAreaInsets()
 
   return (
     <StyledContainer>
-      <TouchableOpacity onPress={() => Coordinator.goBack()}>
-        <PowerButton name={'arrow-left'} />
-      </TouchableOpacity>
-      {/* <TitleScreen>{`O valor da corrida e de R$${route?.params?.price} `}</TitleScreen>
-      <TitleScreen>{`Para: ${route?.params?.address} `}</TitleScreen> */}
+      <HeaderContainer insets={insets.top}>
+        <TouchableOpacity onPress={() => Coordinator.goBack()}>
+          <PowerButton name={'arrow-left'} />
+        </TouchableOpacity>
+      </HeaderContainer>
+      <StyledDescriptionContainer>
+        <AnimationContainer
+          style={{
+            shadowColor: '#171717',
+            shadowOffset: { width: -2, height: 4 },
+            shadowOpacity: 0.2,
+            shadowRadius: 3,
+          }}>
+          <LottieView
+            autoPlay
+            style={{
+              width: 200,
+              height: 200,
+              borderRadius: 100,
+              backgroundColor: 'transparent',
+            }}
+            source={require('../../assets/animations/dog-walking.json')}
+          />
+        </AnimationContainer>
+        <DescriptionText>Encontrando motorista...</DescriptionText>
+      </StyledDescriptionContainer>
     </StyledContainer>
   )
 }

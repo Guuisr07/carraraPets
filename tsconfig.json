@@ -4,4 +4,6 @@
   },
   "extends": "expo/tsconfig.base",
   "typeRoots": ["./src/@types/env"],
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
 }
