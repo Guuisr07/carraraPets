@@ -9,9 +9,7 @@ import { useAuth } from '../../hooks/auth'
 import { ActivityIndicator, Alert, Platform } from 'react-native'
 import theme from '../../global/theme'
 
-type InitialAppScreen = {
-}
-
+type InitialAppScreen = {}
 
 const StyledContainer = styled.View`
   flex: 1;
@@ -67,7 +65,7 @@ const LogoTitle = styled.Text`
   margin-top: 8px;
 `
 
-export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
+export const InitialAppScreen: React.FC<InitialAppScreen> = ({}) => {
   const [isLoading, setIsLoading] = useState(false)
   const { signInWithGoogle } = useAuth()
 
@@ -87,30 +85,41 @@ export const InitialAppScreen: React.FC<InitialAppScreen> = ({ }) => {
       <Header>
         <TitleWrapper>
           <LogoContainer>
-           <LogoApp  width={70} height={70}/> 
-          <LogoTitle>CarraraPets</LogoTitle>
-           </LogoContainer> 
-          <Title >
+            <LogoApp width={70} height={70} />
+            <LogoTitle>CarraraPets</LogoTitle>
+          </LogoContainer>
+          <Title>
             Embarque {'\n'}
-            nesta diversão com{'\n'}
-            o seu pet
+            nesta diversão com{'\n'}o seu pet
           </Title>
-
         </TitleWrapper>
 
         <SignInTitle>
           Faca o seu login com{'\n'}
           uma das contas abaixo
         </SignInTitle>
-
       </Header>
       <Footer>
         <FooterWrapper>
-          <SignInSocialButton title='Entrar com o google' svg={LogoGoogle} onPress={handleSignInWithGoogle} />
-          {Platform.OS === 'ios' &&
-            <SignInSocialButton title='Entrar com Apple' svg={LogoApple} onPress={handleSignInWithGoogle} />}
+          <SignInSocialButton
+            title="Entrar com o google"
+            svg={LogoGoogle}
+            onPress={handleSignInWithGoogle}
+          />
+          {Platform.OS === 'ios' && (
+            <SignInSocialButton
+              title="Entrar com Apple"
+              svg={LogoApple}
+              onPress={handleSignInWithGoogle}
+            />
+          )}
         </FooterWrapper>
-        {isLoading && <ActivityIndicator color={theme.colors.shape} style={{ marginTop: 18 }} />}
+        {isLoading && (
+          <ActivityIndicator
+            color={theme.colors.shape}
+            style={{ marginTop: 18 }}
+          />
+        )}
       </Footer>
     </StyledContainer>
   )

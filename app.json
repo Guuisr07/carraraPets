@@ -17,7 +17,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/icons/iconadaptiveIcon.png",
         "backgroundColor": "#fff"
-      }
+      },
+      "package": "com.guuisr07.carraraPets"
     }
   }
 }

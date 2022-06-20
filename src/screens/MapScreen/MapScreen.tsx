@@ -7,34 +7,27 @@ import { useEffect, useRef, useState } from 'react'
 import { credentials } from '../../utils/credentials'
 import MapViewDirections from 'react-native-maps-directions'
 import { images } from '../../utils/searchAssets'
-import { RFValue } from 'react-native-responsive-fontsize'
 import { Coordinator } from '../../navigation/coordinator/coordinator'
 import { Search } from './Search'
 import { Feather } from '@expo/vector-icons'
-import theme from '../../global/theme'
 import {
+  BackButton,
   CardRun,
   CardTitle,
   ContainerCardTitle,
   DescriptionText,
+  IconBack,
   ImageDog,
-  PaymentIconButton,
   PriceButton,
   PriceButtonDescription,
   PriceText,
-  ProfileButton,
-  ProfilePicture,
   ResumeRideContainer,
   StyledContainer,
   TitleResumeRide,
 } from './styles'
-import styled from 'styled-components/native'
 
 
-export const PowerButton = styled<any>(Feather)`
-  font-size: 40px;
-  color: black;
-`
+
 
 export const MapScreen: React.FC<any> = ({ navigation }) => {
   const mapEl = useRef()
@@ -128,6 +121,9 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
         </MapView>
         <CardRun behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <ContainerCardTitle>
+            <TouchableOpacity  onPress={Coordinator.goBack}>
+              <IconBack name={'arrow-left'}/>
+            </TouchableOpacity>
             <CardTitle>{`Boa tarde, ${user.name}`}</CardTitle>
           </ContainerCardTitle>
           <Search handleSetDestination={setDestinationGoogleInput} />
@@ -151,7 +147,7 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
                   })
                 }>
                 <PriceButtonDescription>
-                  SOLICIAR CORRIDA
+                  SOLICITAR CORRIDA
                 </PriceButtonDescription>
               </PriceButton>
             </ResumeRideContainer>

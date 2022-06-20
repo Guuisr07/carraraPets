@@ -20,6 +20,9 @@ export class Coordinator {
   static goToProfileScreen() {
     Navigation.navigate(MainStackScreenNames.ProfileScreen)
   }
+  static goToMapScreen() {
+    Navigation.navigate(MainStackScreenNames.MapScreen)
+  }
   static goToFisrtSignUpScreen() {
     Navigation.navigate(MainStackScreenNames.FisrtSignUpScreen)
   }

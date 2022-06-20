@@ -24,6 +24,14 @@ export const MainStackScreenNames = {
 
 const MainStack = (Stack: any) => [
   <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.ProfileScreen}`}
+    name={MainStackScreenNames.ProfileScreen}
+    component={ProfileScreen}
+    options={{
+      headerShown: false,
+    }}
+  />,
+  <Stack.Screen
     key={`${ScreensMainStack}${MainStackScreenNames.MapScreen}`}
     name={MainStackScreenNames.MapScreen}
     component={MapScreen}
@@ -47,14 +55,7 @@ const MainStack = (Stack: any) => [
       headerShown: false,
     }}
   />,
-  <Stack.Screen
-    key={`${ScreensMainStack}${MainStackScreenNames.ProfileScreen}`}
-    name={MainStackScreenNames.ProfileScreen}
-    component={ProfileScreen}
-    options={{
-      headerShown: false,
-    }}
-  />,
+  
   <Stack.Screen
     key={`${ScreensMainStack}${MainStackScreenNames.FisrtSignUpScreen}`}
     name={MainStackScreenNames.FisrtSignUpScreen}
