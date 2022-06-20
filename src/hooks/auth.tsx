@@ -10,6 +10,7 @@ interface AuthProviderProps {
 interface User {
   id: string,
   name: string,
+  fullName: string,
   email: string,
   photo?: string,
 }
@@ -54,10 +55,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         const response = await fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${params.access_token}`)
         const userInfo = await response.json()
 
+
         const userLogged = {
           id: userInfo.id,
           email: userInfo.email,
           name: userInfo.given_name,
+          fullName: userInfo.name,
           photo: userInfo.picture
         }
 

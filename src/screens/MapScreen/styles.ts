@@ -1,6 +1,6 @@
 import { RFValue } from "react-native-responsive-fontsize"
 import styled from "styled-components/native"
-import { MaterialIcons } from '@expo/vector-icons'
+import { MaterialIcons, Feather } from '@expo/vector-icons'
 import { KeyboardAvoidingView } from "react-native"
 
 export const StyledContainer = styled.View`
@@ -76,10 +76,12 @@ export const CardTitle = styled.Text`
   font-size: ${RFValue(20)}px;
   color: ${({ theme }) => theme.colors.text_dark};
   text-align: center;
+  margin-left: 48px;
 `
 export const ContainerCardTitle = styled.View`
-  padding: 16px;
-  justify-content: center;
+  padding-vertical: 16px;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   border-color: #ddd;
   border-bottom-width: 1px;
@@ -93,4 +95,10 @@ export const ImageDog = styled.Image`
   border-radius: 30px;
   border-width: 2px;
   margin-top: 16px;
+`
+export const IconBack = styled<any>(Feather)`
+  font-size: 30px;
+  color: black;
+  margin-left: 16px;
+  
 `
