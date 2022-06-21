@@ -169,13 +169,11 @@ export const ProfileScreen: React.FC<any> = ({}) => {
 
           <ProfileMenuOptions label={'Mensagens'} iconName={'email'} />
           <ProfileMenuOptions label={'Configurações'} iconName={'cog'} />
-          <LogoContainer>
-            <LogoApp
-              width={Platform.OS === 'ios' ? 70 : 40}
-              height={Platform.OS === 'ios' ? 70 : 40}
-            />
-            <LogoTitle>CarraraPets</LogoTitle>
-          </LogoContainer>
+          <ProfileMenuOptions
+            label={'Sair do app'}
+            iconName={'logout'}
+            onPress={signOut}
+          />
         </MenuOptions>
       </DescriptionContainer>
     </StyledContainer>
