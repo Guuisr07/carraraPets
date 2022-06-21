@@ -30,7 +30,7 @@ export const TitleResumeRide = styled.Text`
   color: black;
 `
 export const PriceButton = styled.TouchableOpacity`
-  background-color: black;
+  background-color: ${({ theme }) => theme.colors.primary};
   width: 100%;
   flex-direction: row;
   padding-horizontal: 16px;
@@ -90,8 +90,8 @@ export const ContainerCardTitle = styled.View`
 export const ImageDog = styled.Image`
   width: 60px;
   height: 60px;
-  border-width: 3px;
-  border-color: black;
+  border-width: 2px;
+  border-color: lightgray;
   border-radius: 30px;
   border-width: 2px;
   margin-top: 16px;
