@@ -59,7 +59,7 @@ const RatingContainer = styled.View`
   padding: 6px;
   margin-top: 8px;
 `
-const StarIcon = styled<any>(FontAwesome)`
+export const StarIcon = styled<any>(FontAwesome)`
   font-size: 16px;
   color: white;
 `
