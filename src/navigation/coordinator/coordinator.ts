@@ -20,6 +20,12 @@ export class Coordinator {
   static goToProfileScreen() {
     Navigation.navigate(MainStackScreenNames.ProfileScreen)
   }
+  static goToDriverProfile(params?: Record<string, any>) {
+    Navigation.navigate(MainStackScreenNames.DriverProfile, params)
+  }
+  static goToFoundDriver(params?: Record<string, any>) {
+    Navigation.navigate(MainStackScreenNames.FoundDriver, params)
+  }
   static goToMapScreen() {
     Navigation.navigate(MainStackScreenNames.MapScreen)
   }
