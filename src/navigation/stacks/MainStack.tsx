@@ -7,11 +7,15 @@ import { SuccessSignUpScreen } from '../../screens/SignUp/SuccessSignUpScreen'
 import { ThirdSignUpScreen } from '../../screens/SignUp/ThirdSignUpScreen'
 import { CheckoutScreen } from '../../screens/CheckoutScreen/CheckoutScreen'
 import { ProfileScreen } from '../../screens/ProfileScreen/ProfileScreen'
+import { FoundDriver } from '../../screens/FoundDriver/FoundDriver'
+import { DriverProfile } from '../../screens/FoundDriver/DriverProfile'
 
 export const ScreensMainStack = 'screens.main.stack'
 
 export const MainStackScreenNames = {
   MapScreen: 'MapScreen',
+  DriverProfile: 'DriverProfile',
+  FoundDriver: 'FoundDriver',
   MainScreen: 'MainScreen',
   LoginScreen: 'LoginScreen',
   FisrtSignUpScreen: 'FisrtSignUpScreen',
@@ -43,6 +47,22 @@ const MainStack = (Stack: any) => [
     key={`${ScreensMainStack}${MainStackScreenNames.LoginScreen}`}
     name={MainStackScreenNames.LoginScreen}
     component={LoginScreen}
+    options={{
+      headerShown: false,
+    }}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.DriverProfile}`}
+    name={MainStackScreenNames.DriverProfile}
+    component={DriverProfile}
+    options={{
+      headerShown: false,
+    }}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.FoundDriver}`}
+    name={MainStackScreenNames.FoundDriver}
+    component={FoundDriver}
     options={{
       headerShown: false,
     }}

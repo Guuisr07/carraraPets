@@ -25,6 +25,7 @@ import {
   StyledContainer,
   TitleResumeRide,
 } from './styles'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 
@@ -79,7 +80,8 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
     )
   }
 
-  const setDestinationGoogleInput = (data: any, details: any) => {
+  
+  const setDestinationGoogleInput = async (data: any, details: any) => {
     setDestination({
       latitude: details?.geometry.location.lat,
       longitude: details?.geometry.location.lng,
@@ -143,7 +145,8 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
                 onPress={() =>
                   Coordinator.goToCheckoutScreen({
                     price: price.toFixed(2),
-                    address: destination?.title,
+                    destination: destination,
+                    origin: origin,
                   })
                 }>
                 <PriceButtonDescription>

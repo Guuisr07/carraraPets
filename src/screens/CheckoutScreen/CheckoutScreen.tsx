@@ -7,11 +7,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { TouchableOpacity } from 'react-native'
 const LottieView = require('lottie-react-native')
 
-const StyledContainer =  styled.View`
+const StyledContainer = styled.View`
   flex: 1;
 `
 const HeaderContainer = styled.View<{ insets: number }>`
-padding-top: ${({ insets }) => insets};
+  padding-top: ${({ insets }) => insets};
   background-color: ${({ theme }) => theme.colors.primary};
   height: 50%;
 `
@@ -43,8 +43,16 @@ const AnimationContainer = styled.View`
   margin-top: ${RFPercentage(-15)}px;
 `
 
-export const CheckoutScreen: React.FC<any> = ({}) => {
+
+
+export const CheckoutScreen: React.FC<any> = ({ route }) => {
   const insets = useSafeAreaInsets()
+  const destination = route.params
+
+
+  const foundDriver = () => {
+    setTimeout(() => Coordinator.goToFoundDriver({ destination }), 5000)
+  }
 
   return (
     <StyledContainer>
@@ -61,16 +69,19 @@ export const CheckoutScreen: React.FC<any> = ({}) => {
             shadowOpacity: 0.2,
             shadowRadius: 3,
           }}>
-          <LottieView
-            autoPlay
-            style={{
-              width: 200,
-              height: 200,
-              borderRadius: 100,
-              backgroundColor: 'transparent',
-            }}
-            source={require('../../assets/animations/dog-walking.json')}
-          />
+          <>
+            <LottieView
+              autoPlay
+              style={{
+                width: 200,
+                height: 200,
+                borderRadius: 100,
+                backgroundColor: 'transparent',
+              }}
+              source={require('../../assets/animations/dog-walking.json')}
+            />
+            {foundDriver()}
+          </>
         </AnimationContainer>
         <DescriptionText>Encontrando motorista...</DescriptionText>
       </StyledDescriptionContainer>
