@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesome, Feather } from '@expo/vector-icons'
 import { RFValue } from 'react-native-responsive-fontsize'
 import styled from 'styled-components/native'
@@ -125,6 +125,25 @@ export const ProfileScreen: React.FC<any> = ({}) => {
   const { user, signOut } = useAuth()
   const insets = useSafeAreaInsets()
 
+  const sendServer = async () => {
+    const response = await fetch('https://mvpcarrarapets.herokuapp.com/CreateUser', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        "Content-Type":'application/json'
+      },
+      body: JSON.stringify({
+        name: user.name
+      })
+    })
+    console.log('Response:', response)
+  }
+
+const handleGoToMapScreen = () => {
+  Coordinator.goToMapScreen()
+  sendServer()
+}
+
   return (
     <StyledContainer insets={insets.top}>
       <StatusBar barStyle={'light-content'} />
@@ -155,7 +174,7 @@ export const ProfileScreen: React.FC<any> = ({}) => {
 
       <DescriptionContainer>
         <ContainerButton>
-          <ButtonInput onPress={Coordinator.goToMapScreen}>
+          <ButtonInput onPress={handleGoToMapScreen}>
             <IconSearch name={'search'} />
             <LabelInputButton>Para onde vamos?</LabelInputButton>
           </ButtonInput>

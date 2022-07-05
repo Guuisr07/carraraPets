@@ -37,6 +37,8 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
   const [destination, setDestination] = useState()
   const [distance, setDistance] = useState()
   const [price, setPrice] = useState(0)
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
   const { user, signOut } = useAuth()
 
@@ -91,6 +93,16 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
     })
   }
 
+  useEffect(() => {
+    fetch('https://mvpcarrarapets.herokuapp.com/GetUser')
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  },[])
+
+  const { name } = data[data.length - 1]
+
   return (
     <>
       <StatusBar
@@ -126,7 +138,7 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
             <TouchableOpacity  onPress={Coordinator.goBack}>
               <IconBack name={'arrow-left'}/>
             </TouchableOpacity>
-            <CardTitle>{`Boa tarde, ${user.name}`}</CardTitle>
+            <CardTitle>{`Boa tarde, ${name}`}</CardTitle>
           </ContainerCardTitle>
           <Search handleSetDestination={setDestinationGoogleInput} />
           
