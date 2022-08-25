@@ -21,7 +21,7 @@ export class Coordinator {
     Navigation.navigate(MainStackScreenNames.ProfileScreen)
   }
   static goToDriverProfile(params?: Record<string, any>) {
-    Navigation.navigate(MainStackScreenNames.DriverProfile, params)
+    Navigation.replace(MainStackScreenNames.DriverProfile, params)
   }
   static goToFoundDriver(params?: Record<string, any>) {
     Navigation.navigate(MainStackScreenNames.FoundDriver, params)
@@ -37,5 +37,17 @@ export class Coordinator {
   }
   static goToThirdSignUpScreen() {
     Navigation.navigate(MainStackScreenNames.ThirdSignUpScreen)
+  }
+  static goToHelpScreen() {
+    Navigation.navigate(MainStackScreenNames.HelpScreen)
+  }
+  static goToPaymentScreen() {
+    Navigation.navigate(MainStackScreenNames.PaymentScreen)
+  }
+  static goToListingPetsScreen() {
+    Navigation.navigate(MainStackScreenNames.ListingPetsScreen)
+  }
+  static goToMessagesScreen() {
+    Navigation.navigate(MainStackScreenNames.MessagesScreen)
   }
 }

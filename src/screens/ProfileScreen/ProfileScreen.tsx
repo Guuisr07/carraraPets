@@ -4,10 +4,11 @@ import { RFValue } from 'react-native-responsive-fontsize'
 import styled from 'styled-components/native'
 import { useAuth } from '../../hooks/auth'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { Platform, StatusBar, TouchableOpacity } from 'react-native'
+import { ImageStore, Platform, StatusBar, TouchableOpacity } from 'react-native'
 import { ProfileButton } from './ProfileButton'
 import { Coordinator } from '../../navigation/coordinator/coordinator'
 import { ProfileMenuOptions } from './ProfileMenuOptions'
+import { images } from '../../utils/searchAssets'
 import LogoApp from '../../assets/icons/logo.svg'
 
 const StyledContainer = styled.View`
@@ -136,7 +137,6 @@ export const ProfileScreen: React.FC<any> = ({}) => {
         name: user.name
       })
     })
-    console.log('Response:', response)
   }
 
 const handleGoToMapScreen = () => {
@@ -155,10 +155,10 @@ const handleGoToMapScreen = () => {
         }}>
         <ProfileInfoContainer>
           <ProfilePhotoContainer>
-            <ProfilePicture source={{ uri: user.photo }} />
+             <ProfilePicture source={images.avatarImage} />
           </ProfilePhotoContainer>
           <RatingAndNameContainer>
-            <NameProfile>{user.fullName}</NameProfile>
+            <NameProfile>{user ? user.fullName : 'Usuario Teste'}</NameProfile>
             <RatingContainer>
               <StarIcon name={'star'} />
               <Rating>5.0</Rating>
@@ -166,8 +166,8 @@ const handleGoToMapScreen = () => {
           </RatingAndNameContainer>
         </ProfileInfoContainer>
         <InteractionButtons>
-          <ProfileButton nameIcon="help-circle" label="Ajuda" />
-          <ProfileButton nameIcon="card" label="Pagamento" />
+          <ProfileButton nameIcon="help-circle" label="Ajuda" onPress={() => Coordinator.goToHelpScreen()}/>
+          <ProfileButton nameIcon="card" label="Pagamento" onPress={() => Coordinator.goToPaymentScreen()}/>
           <ProfileButton nameIcon="compass" label="Viagens" />
         </InteractionButtons>
       </HeaderContainer>
@@ -184,9 +184,9 @@ const handleGoToMapScreen = () => {
           <ProfileMenuOptions
             label={'Perfil do Pet'}
             iconName={'dog-service'}
+            onPress={() => Coordinator.goToListingPetsScreen()}
           />
-
-          <ProfileMenuOptions label={'Mensagens'} iconName={'email'} />
+          <ProfileMenuOptions label={'Mensagens'} iconName={'email'} onPress={() => Coordinator.goToMessagesScreen()} />
           <ProfileMenuOptions label={'Configurações'} iconName={'cog'} />
           <ProfileMenuOptions
             label={'Sair do app'}

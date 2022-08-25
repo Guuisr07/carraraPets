@@ -35,7 +35,7 @@ export const ProfileButton: React.FC<ProfileButtonProps> = ({
   ...rest
 }) => {
   return (
-    <StyledContainerButton>
+    <StyledContainerButton onPress={onPress}>
       <IconButtons name={nameIcon} />
 
       <Label>{label}</Label>

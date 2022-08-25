@@ -8,6 +8,7 @@ import { SignInSocialButton } from '../../components/SignInSocialButton/SignInSo
 import { useAuth } from '../../hooks/auth'
 import { ActivityIndicator, Alert, Platform } from 'react-native'
 import theme from '../../global/theme'
+import { Coordinator } from '../../navigation/coordinator/coordinator'
 
 type InitialAppScreen = {}
 

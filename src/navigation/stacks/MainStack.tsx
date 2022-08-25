@@ -9,6 +9,10 @@ import { CheckoutScreen } from '../../screens/CheckoutScreen/CheckoutScreen'
 import { ProfileScreen } from '../../screens/ProfileScreen/ProfileScreen'
 import { FoundDriver } from '../../screens/FoundDriver/FoundDriver'
 import { DriverProfile } from '../../screens/FoundDriver/DriverProfile'
+import { HelpScreen } from '../../screens/HelpScreen/HelpScreen'
+import { PaymentScreen } from '../../screens/PaymentScreen/PaymentScreen'
+import { ListingPetsScreen } from '../../screens/ListingPetsScreen/ListingPetsScreen'
+import { MessagesScreen } from '../../screens/MessagesScreen/MessagesScreen'
 
 export const ScreensMainStack = 'screens.main.stack'
 
@@ -24,6 +28,10 @@ export const MainStackScreenNames = {
   SuccessSignUpScreen: 'SuccessSignUpScreen',
   CheckoutScreen: 'CheckoutScreen',
   ProfileScreen: 'ProfileScreen',
+  HelpScreen: 'HelpScreen',
+  PaymentScreen: 'PaymentScreen',
+  ListingPetsScreen: 'ListingPetsScreen',
+  MessagesScreen: 'MessagesScreen',
 }
 
 const MainStack = (Stack: any) => [
@@ -108,6 +116,38 @@ const MainStack = (Stack: any) => [
       headerShown: false,
     }}
   />,
+  <Stack.Screen
+  key={`${ScreensMainStack}${MainStackScreenNames.HelpScreen}`}
+  name={MainStackScreenNames.HelpScreen}
+  component={HelpScreen}
+  options={{
+    headerShown: false,
+  }}
+/>,
+ <Stack.Screen
+ key={`${ScreensMainStack}${MainStackScreenNames.PaymentScreen}`}
+ name={MainStackScreenNames.PaymentScreen}
+ component={PaymentScreen}
+ options={{
+   headerShown: false,
+ }}
+/>,
+<Stack.Screen
+ key={`${ScreensMainStack}${MainStackScreenNames.ListingPetsScreen}`}
+ name={MainStackScreenNames.ListingPetsScreen}
+ component={ListingPetsScreen}
+ options={{
+   headerShown: false,
+ }}
+/>,
+<Stack.Screen
+ key={`${ScreensMainStack}${MainStackScreenNames.MessagesScreen}`}
+ name={MainStackScreenNames.MessagesScreen}
+ component={MessagesScreen}
+ options={{
+   headerShown: false,
+ }}
+/>,
 ]
 
 export default MainStack

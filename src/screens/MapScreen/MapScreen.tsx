@@ -9,9 +9,7 @@ import MapViewDirections from 'react-native-maps-directions'
 import { images } from '../../utils/searchAssets'
 import { Coordinator } from '../../navigation/coordinator/coordinator'
 import { Search } from './Search'
-import { Feather } from '@expo/vector-icons'
 import {
-  BackButton,
   CardRun,
   CardTitle,
   ContainerCardTitle,
@@ -25,7 +23,6 @@ import {
   StyledContainer,
   TitleResumeRide,
 } from './styles'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 
@@ -101,7 +98,7 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
       .finally(() => setLoading(false));
   },[])
 
-  const { name } = data[data.length - 1]
+  const { name } = data[data.length - 1] || 'Usuario teste'
 
   return (
     <>

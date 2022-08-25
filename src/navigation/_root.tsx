@@ -17,7 +17,7 @@ export const RootNavigation = () => {
     <NativeContainer ref={navigationRef}>
       <Stack.Navigator>
 
-        {user.id ? MainStack(Stack) : AuthStack(Stack)}
+        {MainStack(Stack)}
      
       </Stack.Navigator>
     </NativeContainer>
