@@ -158,7 +158,7 @@ const handleGoToMapScreen = () => {
              <ProfilePicture source={images.avatarImage} />
           </ProfilePhotoContainer>
           <RatingAndNameContainer>
-            <NameProfile>{user ? user.fullName : 'Usuario Teste'}</NameProfile>
+            <NameProfile>Usuario Teste</NameProfile>
             <RatingContainer>
               <StarIcon name={'star'} />
               <Rating>5.0</Rating>
