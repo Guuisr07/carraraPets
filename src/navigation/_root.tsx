@@ -6,7 +6,6 @@ import { navigationRef } from './coordinator/navigationService'
 import { useAuth } from '../hooks/auth'
 import AuthStack from './stacks/AuthStack'
 
-
 const Stack = createNativeStackNavigator()
 
 //TODO: add isLogged validation for AuthStack
@@ -15,10 +14,11 @@ export const RootNavigation = () => {
 
   return (
     <NativeContainer ref={navigationRef}>
-      <Stack.Navigator>
-
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
         {MainStack(Stack)}
-     
       </Stack.Navigator>
     </NativeContainer>
   )

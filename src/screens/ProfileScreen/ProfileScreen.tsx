@@ -127,22 +127,25 @@ export const ProfileScreen: React.FC<any> = ({}) => {
   const insets = useSafeAreaInsets()
 
   const sendServer = async () => {
-    const response = await fetch('https://mvpcarrarapets.herokuapp.com/CreateUser', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        "Content-Type":'application/json'
-      },
-      body: JSON.stringify({
-        name: user.name
-      })
-    })
+    const response = await fetch(
+      'https://mvpcarrarapets.herokuapp.com/CreateUser',
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: user.name,
+        }),
+      }
+    )
   }
 
-const handleGoToMapScreen = () => {
-  Coordinator.goToMapScreen()
-  sendServer()
-}
+  const handleGoToMapScreen = () => {
+    Coordinator.goToMapScreen()
+    sendServer()
+  }
 
   return (
     <StyledContainer insets={insets.top}>
@@ -155,10 +158,10 @@ const handleGoToMapScreen = () => {
         }}>
         <ProfileInfoContainer>
           <ProfilePhotoContainer>
-             <ProfilePicture source={images.avatarImage} />
+            <ProfilePicture source={images.avatarImage} />
           </ProfilePhotoContainer>
           <RatingAndNameContainer>
-            <NameProfile>{user ? user.fullName : 'Usuario Teste'}</NameProfile>
+            <NameProfile>{'Guilherme Santana'}</NameProfile>
             <RatingContainer>
               <StarIcon name={'star'} />
               <Rating>5.0</Rating>
@@ -166,8 +169,16 @@ const handleGoToMapScreen = () => {
           </RatingAndNameContainer>
         </ProfileInfoContainer>
         <InteractionButtons>
-          <ProfileButton nameIcon="help-circle" label="Ajuda" onPress={() => Coordinator.goToHelpScreen()}/>
-          <ProfileButton nameIcon="card" label="Pagamento" onPress={() => Coordinator.goToPaymentScreen()}/>
+          <ProfileButton
+            nameIcon="help-circle"
+            label="Ajuda"
+            onPress={() => Coordinator.goToHelpScreen()}
+          />
+          <ProfileButton
+            nameIcon="card"
+            label="Pagamento"
+            onPress={() => Coordinator.goToPaymentScreen()}
+          />
           <ProfileButton nameIcon="compass" label="Viagens" />
         </InteractionButtons>
       </HeaderContainer>
@@ -186,8 +197,16 @@ const handleGoToMapScreen = () => {
             iconName={'dog-service'}
             onPress={() => Coordinator.goToListingPetsScreen()}
           />
-          <ProfileMenuOptions label={'Mensagens'} iconName={'email'} onPress={() => Coordinator.goToMessagesScreen()} />
-          <ProfileMenuOptions label={'Configurações'} iconName={'cog'} />
+          <ProfileMenuOptions
+            label={'Mensagens'}
+            iconName={'email'}
+            onPress={() => Coordinator.goToMessagesScreen()}
+          />
+          <ProfileMenuOptions
+            label={'Configurações'}
+            iconName={'cog'}
+            onPress={() => Coordinator.goToConfigScreen()}
+          />
           <ProfileMenuOptions
             label={'Sair do app'}
             iconName={'logout'}

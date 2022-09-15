@@ -50,4 +50,10 @@ export class Coordinator {
   static goToMessagesScreen() {
     Navigation.navigate(MainStackScreenNames.MessagesScreen)
   }
+  static goToPaymentDescriptionScreen() {
+    Navigation.navigate(MainStackScreenNames.PaymentDescriptionScreen)
+  }
+  static goToConfigScreen() {
+    Navigation.navigate(MainStackScreenNames.ConfigScreen)
+  }
 }

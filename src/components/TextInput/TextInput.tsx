@@ -58,8 +58,7 @@ const LabelContainer = styled(View)`
 `
 
 const StyledText = styled.Text<any>`
-  margin-top: ${({ gutterTop }) =>
-    gutterTop ? 8 : 0};
+  margin-top: ${({ gutterTop }) => (gutterTop ? 8 : 0)};
 `
 
 const IconEyeOn = styled<any>(Feather)`
@@ -94,10 +93,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   const requiredText = required ? 'Obrigatório' : 'Opcional'
   const theme = useTheme()
   const renderRequirementLabel = (text: string) => (
-    <StyledText
-      fontSize={'12px'}
-      fontWeight={'400'}
-      >
+    <StyledText fontSize={'12px'} fontWeight={'400'}>
       {text}
     </StyledText>
   )
@@ -105,23 +101,23 @@ export const TextInput: React.FC<TextInputProps> = ({
     <StyledText
       fontSize={sizeLabelText ? sizeLabelText : '16px'}
       color={'gray'}
-      fontWeight={'400'}
-      >
+      fontWeight={'400'}>
       {text}
     </StyledText>
   )
   const renderHelpText = (text: string) => (
-    <StyledText
-      fontSize={'14px'}
-      fontWeight={'400'}
-      gutterTop>
+    <StyledText fontSize={'14px'} fontWeight={'400'} gutterTop>
       {text}
     </StyledText>
   )
   //TODO: Usar icon correspondente
   const renderVisibilityToggleButton = () => (
     <TouchableOpacity onPress={onVisibilityToggle}>
-      {isTextVisible ? <IconEyeOn name={'eye'}/> : <IconEyeOff name={'eye-off'} />}
+      {isTextVisible ? (
+        <IconEyeOn name={'eye'} />
+      ) : (
+        <IconEyeOff name={'eye-off'} />
+      )}
     </TouchableOpacity>
   )
   const renderInput = () => (

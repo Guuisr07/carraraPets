@@ -8,7 +8,6 @@ import { ProfileMenuOptions } from '../ProfileScreen/ProfileMenuOptions'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
 
-
 const StyledContainer = styled.View<any>`
   flex: 1;
   padding-horizontal: 16px;
@@ -45,20 +44,37 @@ export const HelpScreen: React.FC<any> = ({}) => {
 
   return (
     <StyledContainer insets={insets.top}>
-        <StatusBar style='dark'/>
+      <StatusBar style="dark" />
       <HeaderContainer>
-      <TouchableOpacity  onPress={Coordinator.goBack}>
-              <IconBack name={'arrow-left'}/>
-            </TouchableOpacity>
+        <TouchableOpacity onPress={Coordinator.goBack}>
+          <IconBack name={'arrow-left'} />
+        </TouchableOpacity>
       </HeaderContainer>
       <InfoContentContainer>
-      <TitleHelpScreen>Ajuda</TitleHelpScreen>
-      <DescriptionText>Aqui tentaremos sanar a maioria de suas duvidas, seja elas em "Forma de pagamento", "Detalhes sobre sua corrida", "Duvidas sobre ser um motorista parceiro" e etc. Contamos com voce !</DescriptionText>
+        <TitleHelpScreen>Ajuda</TitleHelpScreen>
+        <DescriptionText>
+          Aqui tentaremos sanar a maioria de suas duvidas, seja elas em "Forma
+          de pagamento", "Detalhes sobre sua corrida", "Duvidas sobre ser um
+          motorista parceiro" e etc. Contamos com voce !
+        </DescriptionText>
       </InfoContentContainer>
-      <ProfileMenuOptions label={'Forma de pagamento'} iconName={'help-circle-outline'} />
-      <ProfileMenuOptions label={'Detalhes da corrida'} iconName={'help-circle-outline'} />
-      <ProfileMenuOptions label={'Ser um motorista parceiro'} iconName={'help-circle-outline'} />
-      <ProfileMenuOptions label={'Termos e privacidade'} iconName={'help-circle-outline'} />
+      <ProfileMenuOptions
+        label={'Forma de pagamento'}
+        iconName={'help-circle-outline'}
+        onPress={() => Coordinator.goToPaymentDescriptionScreen()}
+      />
+      <ProfileMenuOptions
+        label={'Detalhes da corrida'}
+        iconName={'help-circle-outline'}
+      />
+      <ProfileMenuOptions
+        label={'Ser um motorista parceiro'}
+        iconName={'help-circle-outline'}
+      />
+      <ProfileMenuOptions
+        label={'Termos e privacidade'}
+        iconName={'help-circle-outline'}
+      />
     </StyledContainer>
   )
 }
