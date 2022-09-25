@@ -13,7 +13,6 @@ const StyledContainer = styled.View<any>`
   padding-horizontal: 16px;
   background-color: white;
   padding-top: ${({ insets }) => insets};
-  
 `
 const TitleHelpScreen = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
@@ -61,7 +60,7 @@ export const ListingPetsScreen: React.FC<any> = ({}) => {
 
   return (
     <StyledContainer insets={insets.top}>
-       <StatusBar style='dark'/>
+      <StatusBar style="dark" />
       <HeaderContainer>
         <TouchableOpacity onPress={Coordinator.goBack}>
           <IconBack name={'arrow-left'} />
@@ -75,11 +74,15 @@ export const ListingPetsScreen: React.FC<any> = ({}) => {
 
       <ContainerAddPayment>
         <TitleContainerPayment>Adicionar pet</TitleContainerPayment>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => Coordinator.goToInitialAddPetScreen()}>
           <AddPaymentIcon name={'ios-add-circle-sharp'} />
         </TouchableOpacity>
       </ContainerAddPayment>
-      <ProfileMenuOptions label={'Fred'} iconName={'dog-service'} />
+      <ProfileMenuOptions
+        label={'Fred'}
+        iconName={'dog-service'}
+        onPress={() => Coordinator.goToInitialAddPetScreen()}
+      />
       <ProfileMenuOptions label={'Bob'} iconName={'dog-service'} />
       <ProfileMenuOptions label={'Spike'} iconName={'dog-service'} />
       <ProfileMenuOptions label={'Scooby'} iconName={'dog-service'} />
