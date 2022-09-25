@@ -1,5 +1,5 @@
 import { AuthStackScreenNames } from "../stacks/AuthStack"
-import { MainStackScreenNames } from "../stacks/MainStack"
+import { MainStackScreenNames } from "../stacks/mainStackScreenNames"
 import { Navigation } from "./navigationService"
 
 export class Coordinator {
@@ -55,5 +55,8 @@ export class Coordinator {
   }
   static goToConfigScreen() {
     Navigation.navigate(MainStackScreenNames.ConfigScreen)
+  }
+  static goToInitialAddPetScreen() {
+    Navigation.navigate(MainStackScreenNames.InitialAddPetScreen)
   }
 }

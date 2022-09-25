@@ -15,28 +15,10 @@ import { ListingPetsScreen } from '../../screens/ListingPetsScreen/ListingPetsSc
 import { MessagesScreen } from '../../screens/MessagesScreen/MessagesScreen'
 import { PaymentDescriptionScreen } from '../../screens/HelpScreen/PaymentDescriptionScreen'
 import { ConfigScreen } from '../../screens/ConfigScreen/ConfigScreen'
+import { MainStackScreenNames } from './mainStackScreenNames'
+import { InitialAddPetScreen } from '../../screens/AddPet/InitialAddPetScreen'
 
 export const ScreensMainStack = 'screens.main.stack'
-
-export const MainStackScreenNames = {
-  MapScreen: 'MapScreen',
-  DriverProfile: 'DriverProfile',
-  FoundDriver: 'FoundDriver',
-  MainScreen: 'MainScreen',
-  LoginScreen: 'LoginScreen',
-  FisrtSignUpScreen: 'FisrtSignUpScreen',
-  SecondSignUpScreen: 'SecondSignUpScreen',
-  ThirdSignUpScreen: 'ThirdSignUpScreen',
-  SuccessSignUpScreen: 'SuccessSignUpScreen',
-  CheckoutScreen: 'CheckoutScreen',
-  ProfileScreen: 'ProfileScreen',
-  HelpScreen: 'HelpScreen',
-  PaymentScreen: 'PaymentScreen',
-  ListingPetsScreen: 'ListingPetsScreen',
-  MessagesScreen: 'MessagesScreen',
-  PaymentDescriptionScreen: 'PaymentDescriptionScreen',
-  ConfigScreen: 'ConfigScreen',
-}
 
 const MainStack = (Stack: any) => [
   <Stack.Screen
@@ -119,6 +101,11 @@ const MainStack = (Stack: any) => [
     key={`${ScreensMainStack}${MainStackScreenNames.ConfigScreen}`}
     name={MainStackScreenNames.ConfigScreen}
     component={ConfigScreen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.InitialAddPetScreen}`}
+    name={MainStackScreenNames.InitialAddPetScreen}
+    component={InitialAddPetScreen}
   />,
 ]
 
