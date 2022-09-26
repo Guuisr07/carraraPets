@@ -18,7 +18,7 @@ export const RootNavigation = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        {user.id ? MainStack(Stack) : AuthStack(Stack)}
+        {MainStack(Stack)}
       </Stack.Navigator>
     </NativeContainer>
   )

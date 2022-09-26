@@ -59,4 +59,7 @@ export class Coordinator {
   static goToInitialAddPetScreen() {
     Navigation.navigate(MainStackScreenNames.InitialAddPetScreen)
   }
+  static goToUserTravelsScreen() {
+    Navigation.navigate(MainStackScreenNames.UserTravelsScreen)
+  }
 }
