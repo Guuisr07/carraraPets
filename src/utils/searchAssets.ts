@@ -4,5 +4,6 @@ export const images = {
   avatarImage: require('../assets/images/avatarImage.png'),
   car: require('../assets/images/car.png'),
   messageImage: require('../assets/images/messagesImage.png'),
-  configImage: require('../assets/images/configImage.png')
+  configImage: require('../assets/images/configImage.png'),
+  travelImage: require('../assets/images/travelImage.png')
 }
