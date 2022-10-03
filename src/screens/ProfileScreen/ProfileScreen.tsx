@@ -122,7 +122,7 @@ const LogoTitle = styled.Text`
   margin-top: 6px;
 `
 
-export const ProfileScreen: React.FC<any> = ({}) => {
+export const ProfileScreen: React.FC<any> = ({ }) => {
   const { user, signOut } = useAuth()
   const insets = useSafeAreaInsets()
 
@@ -179,7 +179,7 @@ export const ProfileScreen: React.FC<any> = ({}) => {
             label="Pagamento"
             onPress={() => Coordinator.goToPaymentScreen()}
           />
-          <ProfileButton nameIcon="compass" label="Viagens" />
+          <ProfileButton nameIcon="compass" label="Viagens" onPress={Coordinator.goToUserTravelsScreen} />
         </InteractionButtons>
       </HeaderContainer>
 

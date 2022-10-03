@@ -39,33 +39,33 @@ const IconBack = styled<any>(Feather)`
 
 const ImageConfigScreen = styled.Image`
   width: 100%;
-  height: 250px;
+  height: 350px;
   border-radius: 50px;
 `
 const ContainerImage = styled.View`
   flex: 1;
 `
 
-export const ConfigScreen: React.FC<any> = ({}) => {
-  const insets = useSafeAreaInsets()
+export const ConfigScreen: React.FC<any> = ({ }) => {
+    const insets = useSafeAreaInsets()
 
-  return (
-    <StyledContainer insets={insets.top}>
-      <StatusBar style="dark" />
-      <HeaderContainer>
-        <TouchableOpacity onPress={Coordinator.goBack}>
-          <IconBack name={'arrow-left'} />
-        </TouchableOpacity>
-      </HeaderContainer>
-      <TitleConfigScreen>Configurações</TitleConfigScreen>
-      <DescriptionText>
-        Aqui vamos auxiliar o usuario para que tenha a liberdade de configurar o
-        seu perfil e informacoes pessoais.
-      </DescriptionText>
+    return (
+        <StyledContainer insets={insets.top}>
+            <StatusBar style="dark" />
+            <HeaderContainer>
+                <TouchableOpacity onPress={Coordinator.goBack}>
+                    <IconBack name={'arrow-left'} />
+                </TouchableOpacity>
+            </HeaderContainer>
+            <TitleConfigScreen>Configurações</TitleConfigScreen>
+            <DescriptionText>
+                Aqui vamos auxiliar o usuario para que tenha a liberdade de configurar o
+                seu perfil e informacoes pessoais.
+            </DescriptionText>
 
-      <ContainerImage>
-        <ImageConfigScreen source={images.configImage} />
-      </ContainerImage>
-    </StyledContainer>
-  )
+            <ContainerImage>
+                <ImageConfigScreen source={images.configImage} />
+            </ContainerImage>
+        </StyledContainer>
+    )
 }
