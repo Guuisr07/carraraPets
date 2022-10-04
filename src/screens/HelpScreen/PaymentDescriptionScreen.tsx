@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { Feather } from '@expo/vector-icons'
 import { Coordinator } from '../../navigation/coordinator/coordinator'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { ProfileMenuOptions } from '../ProfileScreen/ProfileMenuOptions'
 
 const StyledContainer = styled.View<{ insets: number }>`
   flex: 1;
@@ -27,6 +28,7 @@ const DescriptionText = styled.Text`
   color: ${({ theme }) => theme.colors.text};
   margin-left: 8px;
   margin-top: 8px;
+  margin-bottom: 64px;
 `
 const HeaderContainer = styled.View`
   margin-top: 40px;
@@ -40,7 +42,7 @@ const ContainerItemsForHelp = styled.ScrollView`
   margin-top: 24px;
 `
 
-export const PaymentDescriptionScreen: React.FC<any> = ({}) => {
+export const PaymentDescriptionScreen: React.FC<any> = ({ }) => {
   const insets = useSafeAreaInsets()
 
   return (
@@ -60,6 +62,23 @@ export const PaymentDescriptionScreen: React.FC<any> = ({}) => {
         Aqui voce aprende como adicionar, editar e remover as formas de
         pagamento no aplicativo.
       </DescriptionText>
+
+      <ProfileMenuOptions
+        label={'Quais são as formas de pagamento disponível?'}
+        iconName={'help-circle-outline'}
+      />
+      <ProfileMenuOptions
+        label={'Como atualizar uma forma de pagamento na sua conta?'}
+        iconName={'help-circle-outline'}
+      />
+      <ProfileMenuOptions
+        label={'Pagamento em dinheiro'}
+        iconName={'help-circle-outline'}
+      />
+      <ProfileMenuOptions
+        label={'Como funcionam as viagens pagas em dinheiro?'}
+        iconName={'help-circle-outline'}
+      />
 
       <ContainerItemsForHelp></ContainerItemsForHelp>
     </StyledContainer>

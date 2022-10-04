@@ -39,7 +39,7 @@ const InfoContentContainer = styled.View`
   margin-bottom: 48px;
 `
 
-export const HelpScreen: React.FC<any> = ({}) => {
+export const HelpScreen: React.FC<any> = ({ }) => {
   const insets = useSafeAreaInsets()
 
   return (
@@ -66,6 +66,7 @@ export const HelpScreen: React.FC<any> = ({}) => {
       <ProfileMenuOptions
         label={'Detalhes da corrida'}
         iconName={'help-circle-outline'}
+        onPress={() => Coordinator.goRaceDetailsScreen()}
       />
       <ProfileMenuOptions
         label={'Ser um motorista parceiro'}

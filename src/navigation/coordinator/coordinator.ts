@@ -62,4 +62,7 @@ export class Coordinator {
   static goToUserTravelsScreen() {
     Navigation.navigate(MainStackScreenNames.UserTravelsScreen)
   }
+  static goRaceDetailsScreen() {
+    Navigation.navigate(MainStackScreenNames.RaceDetailsScreen)
+  }
 }

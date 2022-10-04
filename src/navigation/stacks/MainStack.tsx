@@ -18,6 +18,7 @@ import { ConfigScreen } from '../../screens/ConfigScreen/ConfigScreen'
 import { MainStackScreenNames } from './mainStackScreenNames'
 import { InitialAddPetScreen } from '../../screens/AddPet/InitialAddPetScreen'
 import { UserTravelsScreen } from '../../screens/UserTravelsScreen/UserTravelsScreen'
+import { RaceDetailsScreen } from '../../screens/HelpScreen/RaceDetailsScreen'
 
 export const ScreensMainStack = 'screens.main.stack'
 
@@ -112,6 +113,11 @@ const MainStack = (Stack: any) => [
     key={`${ScreensMainStack}${MainStackScreenNames.UserTravelsScreen}`}
     name={MainStackScreenNames.UserTravelsScreen}
     component={UserTravelsScreen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.RaceDetailsScreen}`}
+    name={MainStackScreenNames.RaceDetailsScreen}
+    component={RaceDetailsScreen}
   />,
 ]
 

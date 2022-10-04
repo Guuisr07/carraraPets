@@ -18,4 +18,5 @@ export const MainStackScreenNames = {
   ConfigScreen: 'ConfigScreen',
   InitialAddPetScreen: 'InitialAddPetScreen',
   UserTravelsScreen: 'UserTravelsScreen',
+  RaceDetailsScreen: 'RaceDetailsScreen',
 }

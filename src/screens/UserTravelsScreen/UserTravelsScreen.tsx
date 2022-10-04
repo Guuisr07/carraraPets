@@ -20,7 +20,7 @@ const DescriptionText = styled.Text`
 
 const ImageUserTravelsScreen = styled.Image`
   width: 100%;
-  height: 200px;
+  height: 250px;
   border-radius: 50px;
 `
 const ContainerImage = styled.View`
@@ -29,20 +29,20 @@ const ContainerImage = styled.View`
 
 
 export const UserTravelsScreen: React.FC<any> = ({ }) => {
-    return (
-        <StyledContainer>
-            <CustomHeader nameScreen='Viagens' />
+  return (
+    <StyledContainer>
+      <CustomHeader nameScreen='Viagens' />
 
-            <DescriptionText>
-                Aqui você encontra o seu histórico de viagens realizadas.
-            </DescriptionText>
+      <DescriptionText>
+        Aqui você encontra o seu histórico de viagens realizadas.
+      </DescriptionText>
 
-            <ContainerImage>
-                <ImageUserTravelsScreen source={images.travelImage} />
-            </ContainerImage>
+      <ContainerImage>
+        <ImageUserTravelsScreen source={images.travelImage} />
+      </ContainerImage>
 
-        </StyledContainer>
+    </StyledContainer>
 
 
-    )
+  )
 }
