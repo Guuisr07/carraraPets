@@ -19,6 +19,20 @@ import { MainStackScreenNames } from './mainStackScreenNames'
 import { InitialAddPetScreen } from '../../screens/AddPet/InitialAddPetScreen'
 import { UserTravelsScreen } from '../../screens/UserTravelsScreen/UserTravelsScreen'
 import { RaceDetailsScreen } from '../../screens/HelpScreen/RaceDetailsScreen'
+import { PartnerDriverScreen } from '../../screens/HelpScreen/PartnerDriverScreen'
+import { TermsAndPrivacyScreen } from '../../screens/HelpScreen/TermsAndPrivacyScreen'
+import { PaymentDescriptionQuest1Screen } from '../../screens/HelpScreen/HelpInformationScreen/PaymentDescriptionQuest1Screen'
+import { PartnerDriverQuest1Screen } from '../../screens/HelpScreen/HelpInformationScreen/PartnerDriverQuest1Screen'
+import { PaymentDescriptionQuest2Screen } from '../../screens/HelpScreen/HelpInformationScreen/PaymentDescriptionQuest2Screen'
+import { PaymentDescriptionQuest3Screen } from '../../screens/HelpScreen/HelpInformationScreen/PaymentDescriptionQuest3Screen'
+import { PaymentDescriptionQuest4Screen } from '../../screens/HelpScreen/HelpInformationScreen/PaymentDescriptionQuest4Screen'
+import { RaceDetailsQuest1Screen } from '../../screens/HelpScreen/HelpInformationScreen/RaceDetailsQuest1Screen'
+import { RaceDetailsQuest2Screen } from '../../screens/HelpScreen/HelpInformationScreen/RaceDetailsQuest2Screen'
+import { RaceDetailsQuest3Screen } from '../../screens/HelpScreen/HelpInformationScreen/RaceDetailsQuest3Screen'
+import { RaceDetailsQuest4Screen } from '../../screens/HelpScreen/HelpInformationScreen/RaceDetailsQuest4Screen'
+import { RaceDetailsQuest5Screen } from '../../screens/HelpScreen/HelpInformationScreen/RaceDetailsQuest5Screen'
+import { RaceDetailsQuest6Screen } from '../../screens/HelpScreen/HelpInformationScreen/RaceDetailsQuest6Screen'
+
 
 export const ScreensMainStack = 'screens.main.stack'
 
@@ -119,6 +133,75 @@ const MainStack = (Stack: any) => [
     name={MainStackScreenNames.RaceDetailsScreen}
     component={RaceDetailsScreen}
   />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.PartnerDriverScreen}`}
+    name={MainStackScreenNames.PartnerDriverScreen}
+    component={PartnerDriverScreen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.TermsAndPrivacyScreen}`}
+    name={MainStackScreenNames.TermsAndPrivacyScreen}
+    component={TermsAndPrivacyScreen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.PaymentDescriptionQuest1Screen}`}
+    name={MainStackScreenNames.PaymentDescriptionQuest1Screen}
+    component={PaymentDescriptionQuest1Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.PartnerDriverQuest1Screen}`}
+    name={MainStackScreenNames.PartnerDriverQuest1Screen}
+    component={PartnerDriverQuest1Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.PaymentDescriptionQuest2Screen}`}
+    name={MainStackScreenNames.PaymentDescriptionQuest2Screen}
+    component={PaymentDescriptionQuest2Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.PaymentDescriptionQuest3Screen}`}
+    name={MainStackScreenNames.PaymentDescriptionQuest3Screen}
+    component={PaymentDescriptionQuest3Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.PaymentDescriptionQuest4Screen}`}
+    name={MainStackScreenNames.PaymentDescriptionQuest4Screen}
+    component={PaymentDescriptionQuest4Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.RaceDetailsQuest1Screen}`}
+    name={MainStackScreenNames.RaceDetailsQuest1Screen}
+    component={RaceDetailsQuest1Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.RaceDetailsQuest2Screen}`}
+    name={MainStackScreenNames.RaceDetailsQuest2Screen}
+    component={RaceDetailsQuest2Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.RaceDetailsQuest3Screen}`}
+    name={MainStackScreenNames.RaceDetailsQuest3Screen}
+    component={RaceDetailsQuest3Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.RaceDetailsQuest4Screen}`}
+    name={MainStackScreenNames.RaceDetailsQuest4Screen}
+    component={RaceDetailsQuest4Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.RaceDetailsQuest5Screen}`}
+    name={MainStackScreenNames.RaceDetailsQuest5Screen}
+    component={RaceDetailsQuest5Screen}
+  />,
+  <Stack.Screen
+    key={`${ScreensMainStack}${MainStackScreenNames.RaceDetailsQuest6Screen}`}
+    name={MainStackScreenNames.RaceDetailsQuest6Screen}
+    component={RaceDetailsQuest6Screen}
+  />,
+
+
+
+
 ]
 
 export default MainStack

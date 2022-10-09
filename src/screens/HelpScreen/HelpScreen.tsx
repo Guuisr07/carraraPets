@@ -69,13 +69,11 @@ export const HelpScreen: React.FC<any> = ({ }) => {
         onPress={() => Coordinator.goRaceDetailsScreen()}
       />
       <ProfileMenuOptions
-        label={'Ser um motorista parceiro'}
+        label={'Como ser um motorista parceiro'}
         iconName={'help-circle-outline'}
+        onPress={() => Coordinator.goPartnerDriverScreen()}
       />
-      <ProfileMenuOptions
-        label={'Termos e privacidade'}
-        iconName={'help-circle-outline'}
-      />
+
     </StyledContainer>
   )
 }

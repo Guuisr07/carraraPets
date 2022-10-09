@@ -208,6 +208,11 @@ export const ProfileScreen: React.FC<any> = ({ }) => {
             onPress={() => Coordinator.goToConfigScreen()}
           />
           <ProfileMenuOptions
+            label={'Termos e Condições'}
+            iconName={'note-check-outline'}
+            onPress={() => Coordinator.goTermsAndPrivacyScreen()}
+          />
+          <ProfileMenuOptions
             label={'Sair do app'}
             iconName={'logout'}
             onPress={signOut}

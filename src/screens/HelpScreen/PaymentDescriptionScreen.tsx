@@ -64,20 +64,24 @@ export const PaymentDescriptionScreen: React.FC<any> = ({ }) => {
       </DescriptionText>
 
       <ProfileMenuOptions
-        label={'Quais são as formas de pagamento disponível?'}
+        label={'Quais são as formas de pagamento disponíveis?'}
         iconName={'help-circle-outline'}
+        onPress={() => Coordinator.goPaymentDescriptionQuest1Screen()}
       />
       <ProfileMenuOptions
         label={'Como atualizar uma forma de pagamento na sua conta?'}
         iconName={'help-circle-outline'}
+        onPress={() => Coordinator.goPaymentDescriptionQuest2Screen()}
       />
       <ProfileMenuOptions
         label={'Pagamento em dinheiro'}
         iconName={'help-circle-outline'}
+        onPress={() => Coordinator.goPaymentDescriptionQuest3Screen()}
       />
       <ProfileMenuOptions
         label={'Como funcionam as viagens pagas em dinheiro?'}
         iconName={'help-circle-outline'}
+        onPress={() => Coordinator.goPaymentDescriptionQuest4Screen()}
       />
 
       <ContainerItemsForHelp></ContainerItemsForHelp>

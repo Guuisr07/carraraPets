@@ -19,4 +19,20 @@ export const MainStackScreenNames = {
   InitialAddPetScreen: 'InitialAddPetScreen',
   UserTravelsScreen: 'UserTravelsScreen',
   RaceDetailsScreen: 'RaceDetailsScreen',
+  PartnerDriverScreen: 'PartnerDriverScreen',
+  TermsAndPrivacyScreen: 'TermsAndPrivacyScreen',
+  PaymentDescriptionQuest1Screen: 'PaymentDescriptionQuest1Screen',
+  PartnerDriverQuest1Screen: 'PartnerDriverQuest1Screen',
+  PaymentDescriptionQuest2Screen: 'PaymentDescriptionQuest2Screen',
+  PaymentDescriptionQuest3Screen: 'PaymentDescriptionQuest3Screen',
+  PaymentDescriptionQuest4Screen: 'PaymentDescriptionQuest4Screen',
+  RaceDetailsQuest1Screen: 'RaceDetailsQuest1Screen',
+  RaceDetailsQuest2Screen: 'RaceDetailsQuest2Screen',
+  RaceDetailsQuest3Screen: 'RaceDetailsQuest3Screen',
+  RaceDetailsQuest4Screen: 'RaceDetailsQuest4Screen',
+  RaceDetailsQuest5Screen: 'RaceDetailsQuest5Screen',
+  RaceDetailsQuest6Screen: 'RaceDetailsQuest6Screen',
+
+
+
 }

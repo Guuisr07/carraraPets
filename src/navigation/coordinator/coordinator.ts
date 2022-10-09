@@ -65,4 +65,43 @@ export class Coordinator {
   static goRaceDetailsScreen() {
     Navigation.navigate(MainStackScreenNames.RaceDetailsScreen)
   }
+  static goPartnerDriverScreen() {
+    Navigation.navigate(MainStackScreenNames.PartnerDriverScreen)
+  }
+  static goTermsAndPrivacyScreen() {
+    Navigation.navigate(MainStackScreenNames.TermsAndPrivacyScreen)
+  }
+  static goPaymentDescriptionQuest1Screen() {
+    Navigation.navigate(MainStackScreenNames.PaymentDescriptionQuest1Screen)
+  }
+  static goPartnerDriverQuest1Screen() {
+    Navigation.navigate(MainStackScreenNames.PartnerDriverQuest1Screen)
+  }
+  static goPaymentDescriptionQuest2Screen() {
+    Navigation.navigate(MainStackScreenNames.PaymentDescriptionQuest2Screen)
+  }
+  static goPaymentDescriptionQuest3Screen() {
+    Navigation.navigate(MainStackScreenNames.PaymentDescriptionQuest3Screen)
+  }
+  static goPaymentDescriptionQuest4Screen() {
+    Navigation.navigate(MainStackScreenNames.PaymentDescriptionQuest4Screen)
+  }
+  static goRaceDetailsQuest1Screen() {
+    Navigation.navigate(MainStackScreenNames.RaceDetailsQuest1Screen)
+  }
+  static goRaceDetailsQuest2Screen() {
+    Navigation.navigate(MainStackScreenNames.RaceDetailsQuest2Screen)
+  }
+  static goRaceDetailsQuest3Screen() {
+    Navigation.navigate(MainStackScreenNames.RaceDetailsQuest3Screen)
+  }
+  static goRaceDetailsQuest4Screen() {
+    Navigation.navigate(MainStackScreenNames.RaceDetailsQuest4Screen)
+  }
+  static goRaceDetailsQuest5Screen() {
+    Navigation.navigate(MainStackScreenNames.RaceDetailsQuest5Screen)
+  }
+  static goRaceDetailsQuest6Screen() {
+    Navigation.navigate(MainStackScreenNames.RaceDetailsQuest6Screen)
+  }
 }
