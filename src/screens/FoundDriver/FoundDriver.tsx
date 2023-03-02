@@ -20,10 +20,14 @@ const DescriptionText = styled.Text`
 
 export const FoundDriver: React.FC<any> = ({ route }) => {
   const animationRef = useRef<Lottie>(null)
-  const destination = route.params.destination
-  
+  const { destination, origin, setDestination } = route.params
+
   const driverPerfile = () => {
-    setTimeout(() => Coordinator.goToDriverProfile({ destination }), 1500)
+    setTimeout(
+      () =>
+        Coordinator.goToDriverProfile({ destination, origin, setDestination }),
+      1500
+    )
   }
 
   useEffect(() => {

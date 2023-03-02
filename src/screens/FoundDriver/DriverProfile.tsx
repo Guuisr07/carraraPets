@@ -1,203 +1,103 @@
-import React, { useEffect, useState } from 'react'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
-import styled from 'styled-components/native'
-import { Feather, FontAwesome, MaterialIcons } from '@expo/vector-icons'
-import { KeyboardAvoidingView, Platform, TouchableOpacity } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
+import { Platform, TouchableOpacity } from 'react-native'
 import { Coordinator } from '../../navigation/coordinator/coordinator'
 import * as Location from 'expo-location'
-import { RFValue } from 'react-native-responsive-fontsize'
 import { images } from '../../utils/searchAssets'
-const LottieView = require('lottie-react-native')
+import {
+  StyledContainer,
+  CardRun,
+  ContainerCardTitle,
+  IconBack,
+  TextContainer,
+  CardTitle,
+  FinishTemp,
+  InfoDescriptionContainer,
+  RunContainer,
+  AnimationContainer,
+  DriverImage,
+  RatingAndNameContainer,
+  NameProfile,
+  RatingContainer,
+  StarIcon,
+  Rating,
+  CarContainer,
+  IconCar,
+  DescriptionTextCar,
+  TipDriver,
+  IconPayment,
+  TipDescription,
+  FooterContainer,
+  IconPhone,
+  MessageWithDriver,
+} from './styles'
+import MapViewDirections from 'react-native-maps-directions'
+import { credentials } from '../../utils/credentials'
+import { LocationAccuracy, watchPositionAsync } from 'expo-location'
 
-const StyledContainer = styled.View`
-  flex: 1;
-`
+export const DriverProfile: React.FC<any> = ({ route }) => {
+  const { destination, origin, setDestination } = route.params
 
-const CardRun = styled(KeyboardAvoidingView)`
-  flex: 1;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  background-color: white;
-`
-export const ContainerCardTitle = styled.View`
-  padding-vertical: 16px;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  border-color: #ddd;
-  border-bottom-width: 1px;
-`
-export const CardTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
-  text-align: center;
-  margin-left: 48px;
-`
-export const IconBack = styled<any>(Feather)`
-  font-size: 30px;
-  color: black;
-  margin-left: 16px;
-`
-export const DriverImage = styled.Image`
-  width: 70px;
-  height: 70px;
-  border-width: 2px;
-  border-radius: 60px;
-  border-width: 2px;
-`
-const InfoDescriptionContainer = styled.View`
-  flex: 1;
-  flex-direction: row;
-  align-items: flex-start;
-  margin-top: 16px;
-`
-const AnimationContainer = styled.View`
-  background-color: white;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  height: 70px;
-  width: 70px;
-  elevation: 5;
-  margin-top: 16px;
-  
-`
-const FinishTemp = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
-  text-align: center;
-  margin-left: 48px;
-`
-const TextContainer = styled.View`
-  flex-direction: column;
-  align-items: center;
-`
-const NameProfile = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
-`
-const RatingAndNameContainer = styled.View`
-  flex-direction: column;
-  flex: 1;
-  margin-top: 16px;
-  margin-left: 16px;
-`
-const RatingContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
-  background-color: lightgray;
-  justify-content: center;
-  border-color: ${({ theme }) => theme.colors.text_dark};
-  border-radius: 35;
-  width: 70px;
-  height: 25px;
-  padding: 2px;
-  margin-top: 8px;
-`
-export const StarIcon = styled<any>(FontAwesome)`
-  font-size: 12px;
-  color: black;
-`
-const Rating = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: ${RFValue(12)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
-  margin-left: 8px;
-`
-export const CarImage = styled.Image`
-  width: 70px;
-  height: 70px;
-`
-const RunContainer = styled.View`
-  flex-direction: row;
-  padding-horizontal: 16px;
-`
-const IconCar = styled<any>(MaterialIcons)`
-  font-size: 30px;
-  color: ${({ theme }) => theme.colors.text_dark};
-  margin-top: 16px;
-  margin-right:  16px;
-  margin-bottom: 2px;
-`
-const CarContainer = styled.View`
-  flex: 1;
-  
-  align-items: flex-end;
-`
-const DescriptionTextCar = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(12)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
-  margin-left: 8px;
-  
-`
-const FooterContainer = styled.View`
-  flex: 0.6;
-  border-width: 1px;
-  flex-direction: row;
-  border-color: lightgray;
-  justify-content: center;
-  align-items: center;
-`
-const MessageWithDriver = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
-`
-const IconPhone = styled<any>(MaterialIcons)`
-  font-size: 20px;
-  color: black;
-  margin-right:  16px;
-`
-const TipDriver = styled.View`
-  flex-direction: row;
-  align-items: center;
-  padding-left: 24px;
-  margin-bottom: 34px;
-`
-const IconPayment = styled<any>(MaterialIcons)`
-  font-size: 24px;
-  color: black;
-  margin-right:  8px;
-`
-const TipDescription = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.text_dark};
-`
+  const mapEl = useRef<MapView>(null)
 
-export const DriverProfile: React.FC<any> = ({}) => {
-  const [origin, setOrigin] = useState()
-  const [errorMsg, setErrorMsg] = useState()
+  const setRouteInDestinationLocale = (result: any) => {
+    setTimeout(
+      () =>
+        mapEl?.current.fitToCoordinates(result?.coordinates, {
+          edgePadding: {
+            top: 50,
+            bottom: 50,
+            left: 50,
+            right: 50,
+          },
+        }),
+      100
+    )
+  }
 
   useEffect(() => {
-    ;(async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync()
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied')
-        return
+    console.log('Driver profile', origin, destination, setDestination)
+    watchPositionAsync(
+      {
+        accuracy: LocationAccuracy.Highest,
+        timeInterval: 1000,
+        distanceInterval: 1,
+      },
+      (response) => {
+        setDestination(response)
+        mapEl.current?.animateCamera({
+          pitch: 50,
+          center: response.coords,
+        })
       }
-
-      const location = await Location.getCurrentPositionAsync({})
-      setOrigin({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      })
-    })()
+    )
   }, [])
 
   return (
     <StyledContainer>
       <MapView
         style={{ flex: 1 }}
+        ref={mapEl}
         provider={PROVIDER_GOOGLE}
-        region={origin}
-        showsUserLocation></MapView>
+        region={destination}
+        showsUserLocation>
+        {destination && (
+          <>
+            <MapViewDirections
+              apikey={credentials.googleApi}
+              destination={origin}
+              origin={destination}
+              strokeWidth={3}
+              onReady={setRouteInDestinationLocale}
+            />
+            <Marker
+              coordinate={destination}
+              anchor={{ x: 0, y: 0 }}
+              image={images.marker}
+            />
+          </>
+        )}
+      </MapView>
       <CardRun behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ContainerCardTitle>
           <TouchableOpacity onPress={Coordinator.goToMapScreen}>
@@ -228,18 +128,18 @@ export const DriverProfile: React.FC<any> = ({}) => {
               </RatingContainer>
             </RatingAndNameContainer>
             <CarContainer>
-            <IconCar name={'local-taxi'} />
-            <DescriptionTextCar>HB20 Azul</DescriptionTextCar>
+              <IconCar name={'local-taxi'} />
+              <DescriptionTextCar>HB20 Azul</DescriptionTextCar>
             </CarContainer>
           </RunContainer>
         </InfoDescriptionContainer>
-          <TipDriver>
-            <IconPayment name={'payment'}/>
-            <TipDescription>Gorjeta</TipDescription>
-          </TipDriver>
+        <TipDriver>
+          <IconPayment name={'payment'} />
+          <TipDescription>Gorjeta</TipDescription>
+        </TipDriver>
         <FooterContainer>
-            <IconPhone name={'phone'} />
-            <MessageWithDriver>Entre em contato</MessageWithDriver>
+          <IconPhone name={'phone'} />
+          <MessageWithDriver>Entre em contato</MessageWithDriver>
         </FooterContainer>
       </CardRun>
     </StyledContainer>

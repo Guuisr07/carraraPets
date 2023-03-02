@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
 import styled from 'styled-components/native'
 import { Feather } from '@expo/vector-icons'
@@ -43,15 +43,16 @@ const AnimationContainer = styled.View`
   margin-top: ${RFPercentage(-15)}px;
 `
 
-
-
 export const CheckoutScreen: React.FC<any> = ({ route }) => {
   const insets = useSafeAreaInsets()
-  const destination = route.params
-
+  const { destination, origin, setDestination } = route.params
 
   const foundDriver = () => {
-    setTimeout(() => Coordinator.goToFoundDriver({ destination }), 5000)
+    setTimeout(
+      () =>
+        Coordinator.goToFoundDriver({ destination, origin, setDestination }),
+      5000
+    )
   }
 
   return (
