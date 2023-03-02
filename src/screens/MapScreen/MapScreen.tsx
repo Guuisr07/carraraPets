@@ -1,6 +1,12 @@
 import * as React from 'react'
-import { Platform, StatusBar, KeyboardAvoidingView, TouchableOpacity } from 'react-native'
+import {
+  Platform,
+  StatusBar,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+} from 'react-native'
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'
+import Geolocation from 'react-native-geolocation-service'
 import { useAuth } from '../../hooks/auth'
 import * as Location from 'expo-location'
 import { useEffect, useRef, useState } from 'react'
@@ -23,9 +29,7 @@ import {
   StyledContainer,
   TitleResumeRide,
 } from './styles'
-
-
-
+import { LocationAccuracy, watchPositionAsync } from 'expo-location'
 
 export const MapScreen: React.FC<any> = ({ navigation }) => {
   const mapEl = useRef()
@@ -34,8 +38,8 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
   const [destination, setDestination] = useState()
   const [distance, setDistance] = useState()
   const [price, setPrice] = useState(0)
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true)
+  const [data, setData] = useState([])
 
   const { user, signOut } = useAuth()
 
@@ -51,14 +55,10 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
       setOrigin({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
       })
     })()
-    const resetDestination = navigation.addListener('focus', () => {
-      setDistance(null)
-      return resetDestination
-    })
   }, [])
 
   const setRouteInDestinationLocale = (result: any) => {
@@ -79,7 +79,6 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
     )
   }
 
-  
   const setDestinationGoogleInput = async (data: any, details: any) => {
     setDestination({
       latitude: details?.geometry.location.lat,
@@ -91,12 +90,26 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
   }
 
   useEffect(() => {
-    fetch('https://mvpcarrarapets.herokuapp.com/GetUser')
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  },[])
+    watchPositionAsync(
+      {
+        accuracy: LocationAccuracy.Highest,
+        timeInterval: 1000,
+        distanceInterval: 10,
+      },
+      (position) => {
+        setOrigin({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        })
+        mapEl?.current.animateCamera({
+          pitch: 0,
+          center: position.coords,
+        })
+      }
+    )
+  }, [])
 
   const { name } = data[data.length - 1] || 'Usuario teste'
 
@@ -128,18 +141,16 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
               />
             </>
           )}
-          
         </MapView>
         <CardRun behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <ContainerCardTitle>
-            <TouchableOpacity  onPress={Coordinator.goBack}>
-              <IconBack name={'arrow-left'}/>
+            <TouchableOpacity onPress={Coordinator.goBack}>
+              <IconBack name={'arrow-left'} />
             </TouchableOpacity>
-            <CardTitle>{`Boa tarde, ${name}`}</CardTitle>
+            <CardTitle>{`Seu pet em primeiro lugar`}</CardTitle>
           </ContainerCardTitle>
           <Search handleSetDestination={setDestinationGoogleInput} />
-          
-          
+
           {distance && (
             <ResumeRideContainer>
               <TitleResumeRide>Popular</TitleResumeRide>
@@ -154,8 +165,9 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
                 onPress={() =>
                   Coordinator.goToCheckoutScreen({
                     price: price.toFixed(2),
-                    destination: destination,
-                    origin: origin,
+                    destination,
+                    origin,
+                    setDestination,
                   })
                 }>
                 <PriceButtonDescription>

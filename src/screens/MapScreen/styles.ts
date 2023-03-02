@@ -1,7 +1,7 @@
-import { RFValue } from "react-native-responsive-fontsize"
-import styled from "styled-components/native"
+import { RFValue } from 'react-native-responsive-fontsize'
+import styled from 'styled-components/native'
 import { MaterialIcons, Feather } from '@expo/vector-icons'
-import { KeyboardAvoidingView } from "react-native"
+import { KeyboardAvoidingView } from 'react-native'
 
 export const StyledContainer = styled.View`
   flex: 1;
@@ -100,5 +100,4 @@ export const IconBack = styled<any>(Feather)`
   font-size: 30px;
   color: black;
   margin-left: 16px;
-  
 `
