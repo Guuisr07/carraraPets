@@ -147,7 +147,7 @@ export const MapScreen: React.FC<any> = ({ navigation }) => {
             <TouchableOpacity onPress={Coordinator.goBack}>
               <IconBack name={'arrow-left'} />
             </TouchableOpacity>
-            <CardTitle>{`Boa tarde, ${name}`}</CardTitle>
+            <CardTitle>{`Seu pet em primeiro lugar`}</CardTitle>
           </ContainerCardTitle>
           <Search handleSetDestination={setDestinationGoogleInput} />
 
