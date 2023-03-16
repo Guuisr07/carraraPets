@@ -4,8 +4,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 
 type ProfileMenuOptionsProps = {
-  label: string,
-  iconName: string,
+  label: string
+  iconName: string
   onPress?: () => void
 }
 
@@ -28,7 +28,11 @@ const IconItemMenu = styled<any>(MaterialCommunityIcons)`
   margin-left: 8px;
 `
 
-export const ProfileMenuOptions: React.FC<ProfileMenuOptionsProps> = ({onPress, label, iconName}) => {
+export const ProfileMenuOptions: React.FC<ProfileMenuOptionsProps> = ({
+  onPress,
+  label,
+  iconName,
+}) => {
   return (
     <StyledContainer onPress={onPress}>
       <IconItemMenu name={iconName} />
