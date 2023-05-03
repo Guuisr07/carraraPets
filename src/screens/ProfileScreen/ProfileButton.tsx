@@ -11,8 +11,8 @@ type ProfileButtonProps = {
 }
 
 const StyledContainerButton = styled.TouchableOpacity`
-  width: 100px;
-  height: 80px;
+  width: 90px;
+  height: 70px;
   border-radius: 25px;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,7 @@ const Label = styled.Text`
 `
 const IconButtons = styled<any>(Ionicons)`
   font-size: 30px;
-  color:  ${({ theme }) => theme.colors.shape};
+  color: ${({ theme }) => theme.colors.shape};
 `
 
 export const ProfileButton: React.FC<ProfileButtonProps> = ({
